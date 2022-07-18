@@ -13,4 +13,5 @@ export interface List {
 export interface DetailedList extends List {
     id: number
     name: string
+    items: Item[]
 }

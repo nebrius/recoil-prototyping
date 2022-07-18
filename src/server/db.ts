@@ -15,6 +15,7 @@ let db: Database | undefined
 
 export async function openDatabase() {
     if (!db) {
+        console.log(`Loading database from "${DB_FILE}"`)
         db = await open({
             filename: DB_FILE,
             driver: sqlite3.Database,
@@ -47,9 +48,12 @@ export async function getList(id: number): Promise<DetailedList | undefined> {
         return
     }
 
+    const items = await db.all(`SELECT * FROM items WHERE list_id = :id`, {
+        ':id': id,
+    })
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return {
         ...listMetadata,
-        items: [], // TODO
+        items,
     }
 }

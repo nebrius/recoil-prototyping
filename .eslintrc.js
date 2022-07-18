@@ -60,7 +60,6 @@ module.exports = {
         'no-bitwise': 'error',
         'no-caller': 'error',
         'no-cond-assign': 'error',
-        'no-console': 'error',
         'no-debugger': 'error',
         'no-eval': 'error',
         'no-fallthrough': 'error',
