@@ -28,7 +28,7 @@
     "rootDir": "./src",
     "sourceMap": true,
     "strict": true,
-    "target": "es5",
+    "target": "ES2015",
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "allowJs": true,

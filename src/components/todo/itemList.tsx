@@ -1,18 +1,28 @@
 import { useRecoilValue } from 'recoil'
-import { getListItemsAtom } from 'state/list'
-import { DetailedList } from 'types'
+import { itemAtom, itemIdsInListSelector } from 'state/item'
+import { List } from 'types'
 
 interface ItemListProps {
-    list: DetailedList
+    currentListId: List['id']
 }
 
-export const ItemList = ({ list }: ItemListProps) => {
-    const { items } = useRecoilValue(getListItemsAtom(list.id, list))
+const Item = ({ id }: { id: number }) => {
+    const item = useRecoilValue(itemAtom(id))
+    return (
+        <li>
+            <input type="checkbox" checked={item.completed} />
+            <label>{item.name}</label>
+        </li>
+    )
+}
+
+export const ItemList = ({ currentListId }: ItemListProps) => {
+    const itemIds = useRecoilValue(itemIdsInListSelector(currentListId))
     return (
         <div>
             Items:
-            {items.map(({ id, name }) => (
-                <div key={id}>{name}</div>
+            {itemIds.map(id => (
+                <Item key={id} id={id} />
             ))}
         </div>
     )

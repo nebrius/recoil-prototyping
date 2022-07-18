@@ -1,7 +1,12 @@
+import { useRecoilValue } from 'recoil'
+import { listAtom } from 'state/list'
 import { List } from 'types'
 
 interface MetadataProps {
-    list: List
+    currentListId: List['id']
 }
 
-export const Metadata = ({ list: { name } }: MetadataProps) => <h1>{name}</h1>
+export const Metadata = ({ currentListId }: MetadataProps) => {
+    const { name } = useRecoilValue(listAtom(currentListId))
+    return <h1>{name}</h1>
+}
