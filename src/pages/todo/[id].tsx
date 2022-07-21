@@ -3,10 +3,10 @@ import { Metadata } from 'components/todo/metadata'
 import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getItemsForList, getList } from 'server/db'
-import { InitialState } from 'state/initialState'
+import { InitialRecoilState } from 'state/initialRecoilStateContext'
 import { List } from 'types'
 
-interface TodoPageProps extends InitialState {
+interface TodoPageProps extends InitialRecoilState {
     currentListId: List['id']
 }
 

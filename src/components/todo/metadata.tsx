@@ -1,4 +1,4 @@
-import { useRecoilValue } from 'recoil'
+import { useHydratedRecoilValue } from 'hooks/useHydratedRecoilValue'
 import { listAtom } from 'state/list'
 import { List } from 'types'
 
@@ -7,6 +7,6 @@ interface MetadataProps {
 }
 
 export const Metadata = ({ currentListId }: MetadataProps) => {
-    const { name } = useRecoilValue(listAtom(currentListId))
+    const { name } = useHydratedRecoilValue(listAtom(currentListId))
     return <h1>{name}</h1>
 }

@@ -1,13 +1,19 @@
 import type { AppProps } from 'next/app'
 import { RecoilRoot } from 'recoil'
-import { InitialState, setInitialState } from 'state/initialState'
+import {
+    InitialRecoilStateContext,
+    InitialRecoilState,
+} from 'state/initialRecoilStateContext'
 
 function MyApp({ Component, pageProps }: AppProps) {
-    setInitialState(pageProps as InitialState)
     return (
-        <RecoilRoot>
-            <Component {...pageProps} />
-        </RecoilRoot>
+        <InitialRecoilStateContext.Provider
+            value={pageProps as InitialRecoilState}
+        >
+            <RecoilRoot>
+                <Component {...pageProps} />
+            </RecoilRoot>
+        </InitialRecoilStateContext.Provider>
     )
 }
 
