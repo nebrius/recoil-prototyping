@@ -1,17 +1,18 @@
-import { atom } from 'recoil'
-import { HydratedRecoilAtom, List } from 'types'
+import { List } from 'types'
 
-export const listAtom: HydratedRecoilAtom<List, number> =
-    id =>
-    ({ lists }) => {
-        const list = lists.find(i => i.id === id)
-        if (!list) {
-            throw new Error(
-                `Could not find item with id ${id} in initial state`,
-            )
-        }
-        return atom({
-            key: 'list',
-            default: list,
-        })
-    }
+import { hydratedAtom } from '../lib/atom'
+
+export function listAtom(id: number) {
+    return hydratedAtom<List>({
+        key: 'list',
+        init({ lists }) {
+            const list = lists.find(i => i.id === id)
+            if (!list) {
+                throw new Error(
+                    `Could not find item with id ${id} in initial state`,
+                )
+            }
+            return list
+        },
+    })
+}

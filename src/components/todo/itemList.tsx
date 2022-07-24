@@ -1,4 +1,4 @@
-import { useHydratedRecoilValue } from 'hooks/useHydratedRecoilValue'
+import { useHydratedRecoilValue } from 'lib/useHydratedRecoilValue'
 import { useRecoilValue } from 'recoil'
 import { itemAtom, itemIdsInListSelector } from 'state/item'
 import { List } from 'types'

@@ -1,26 +1,26 @@
-import { atom, selectorFamily } from 'recoil'
-import { HydratedRecoilAtom, Item } from 'types'
-import { getRecoilKey } from 'utils'
+import { hydratedAtom } from 'lib/atom'
+import { selectorFamily } from 'recoil'
+import { Item } from 'types'
 
 const currentItems = new Map<number, Item>()
 
-export const itemAtom: HydratedRecoilAtom<Item, number> =
-    id =>
-    ({ items }) => {
-        const item = items.find(i => i.id === id)
-        if (!item) {
-            throw new Error(
-                `Could not find item with id ${id} in initial state`,
-            )
-        }
-        return atom({
-            key: getRecoilKey('item'),
-            default: item,
-        })
-    }
+export function itemAtom(id: number) {
+    return hydratedAtom<Item>({
+        key: 'item',
+        init: ({ items }) => {
+            const item = items.find(i => i.id === id)
+            if (!item) {
+                throw new Error(
+                    `Could not find item with id ${id} in initial state`,
+                )
+            }
+            return item
+        },
+    })
+}
 
 export const itemIdsInListSelector = selectorFamily<number[], number>({
-    key: getRecoilKey('items-in-list'),
+    key: 'items-in-list',
     get: listId => () => {
         const items: number[] = []
         for (const [, item] of currentItems) {
