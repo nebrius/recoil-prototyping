@@ -1,5 +1,5 @@
-import { hydratedAtom } from 'lib/atom'
 import { selectorFamily } from 'recoil'
+import { hydratedAtom } from 'state/atom'
 import { Item } from 'types'
 
 const currentItems = new Map<number, Item>()

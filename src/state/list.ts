@@ -1,6 +1,6 @@
 import { List } from 'types'
 
-import { hydratedAtom } from '../lib/atom'
+import { hydratedAtom } from './atom'
 
 export function listAtom(id: number) {
     return hydratedAtom<List>({

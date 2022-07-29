@@ -7,7 +7,7 @@ import {
     WrappedValue,
 } from 'recoil'
 
-import { InitialState } from '../state/initialRecoilStateContext'
+import { InitialState } from './initialRecoilStateContext'
 
 export type HydratedAtomOptions<T> = AtomOptions<T> & {
     init(
