@@ -6,7 +6,7 @@ interface MetadataProps {
     currentListId: List['id']
 }
 
-export const Metadata = ({ currentListId }: MetadataProps) => {
+export function Metadata({ currentListId }: MetadataProps) {
     const { name } = useHydratedRecoilValue(listAtom(currentListId))
     return <h1>{name}</h1>
 }

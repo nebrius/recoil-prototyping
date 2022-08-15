@@ -11,13 +11,17 @@ const Item = ({ id }: { id: number }) => {
     const item = useHydratedRecoilValue(itemAtom(id))
     return (
         <li>
-            <input type="checkbox" checked={item.completed} />
+            <input
+                type="checkbox"
+                checked={item.completed}
+                onChange={() => console.log('Checked')}
+            />
             <label>{item.name}</label>
         </li>
     )
 }
 
-export const ItemList = ({ currentListId }: ItemListProps) => {
+export function ItemList({ currentListId }: ItemListProps) {
     const itemIds = useRecoilValue(itemIdsInListSelector(currentListId))
     return (
         <div>

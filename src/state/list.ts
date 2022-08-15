@@ -1,3 +1,4 @@
+import { atom } from 'recoil'
 import { List } from 'types'
 
 import { hydratedAtom } from './atom'
@@ -16,3 +17,8 @@ export function listAtom(id: number) {
         },
     })
 }
+
+export const currentListAtom = atom<List | null>({
+    key: 'currentList',
+    default: null,
+})
