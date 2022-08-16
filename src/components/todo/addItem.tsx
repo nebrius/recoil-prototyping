@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Modal from 'react-modal'
 import { List } from 'types'
 
 interface AddItemProps {
@@ -5,5 +7,18 @@ interface AddItemProps {
 }
 
 export function AddItem({ currentListId }: AddItemProps) {
-    return <button>Add item to list {currentListId}</button>
+    const [modalIsOpen, setIsOpen] = useState(false)
+
+    return (
+        <>
+            <button onClick={() => setIsOpen(true)}>
+                Add item to list {currentListId}
+            </button>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={() => setIsOpen(false)}
+                contentLabel="Add item"
+            ></Modal>
+        </>
+    )
 }
