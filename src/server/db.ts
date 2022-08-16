@@ -56,3 +56,43 @@ export async function getItemsForList(listId: number) {
         ':id': listId,
     })
 }
+
+export async function createItem(item: Omit<Item, 'id'>): Promise<Item> {
+    const db = await getDatabase()
+    const results = await db.run(
+        `INSERT INTO items (list_id, name, completed) VALUES (:list_id, :name, :completed)`,
+        {
+            ':list_id': item.list_id,
+            ':name': item.name,
+            ':completed': item.completed,
+        },
+    )
+    const itemId = results.lastID
+    if (!itemId) {
+        throw new Error(`Error inserting row`)
+    }
+    return {
+        ...item,
+        id: itemId,
+    }
+}
+
+export async function updateItem(item: Item): Promise<void> {
+    const db = await getDatabase()
+    await db.run(
+        `UPDATE items SET list_id = :list_id, name = :name, completed = :completed WHERE id = :id`,
+        {
+            ':id': item.id,
+            ':list_id': item.list_id,
+            ':name': item.name,
+            ':completed': item.completed,
+        },
+    )
+}
+
+export async function deleteItem(id: number) {
+    const db = await getDatabase()
+    await db.run(`DELETE FROM items WHERE id = :id`, {
+        ':id': id,
+    })
+}
