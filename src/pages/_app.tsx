@@ -1,3 +1,6 @@
+// eslint-disable-next-line spaced-comment
+/// <reference types="styled-jsx" />
+
 import type { AppProps } from 'next/app'
 import { RecoilRoot } from 'recoil'
 import {
