@@ -21,14 +21,25 @@ export function AddItem({ currentListId }: AddItemProps) {
     const [modalIsOpen, setIsOpen] = useState(false)
     const [name, setName] = useState('')
 
+    function onOpen() {
+        setIsOpen(true)
+    }
+
+    function onClose() {
+        setIsOpen(false)
+        setName('')
+    }
+
+    function onCreate() {
+        console.log(`Creating item named ${name}`)
+    }
+
     return (
         <>
-            <button onClick={() => setIsOpen(true)}>
-                Add item to list {currentListId}
-            </button>
+            <button onClick={onOpen}>Add item to list {currentListId}</button>
             <Modal
                 isOpen={modalIsOpen}
-                onRequestClose={() => setIsOpen(false)}
+                onRequestClose={onClose}
                 contentLabel="Add item"
                 style={customStyles}
             >
@@ -48,10 +59,8 @@ export function AddItem({ currentListId }: AddItemProps) {
                     `}</style>
                 </div>
                 <div className="container">
-                    <button onClick={() => setIsOpen(false)}>Cancel</button>
-                    <button onClick={() => console.log('saving')}>
-                        Create
-                    </button>
+                    <button onClick={onClose}>Cancel</button>
+                    <button onClick={onCreate}>Create</button>
                     <style jsx>{`
                         .container {
                             display: flex;

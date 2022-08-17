@@ -2,19 +2,26 @@
 /// <reference types="styled-jsx" />
 
 import type { AppProps } from 'next/app'
+import Modal from 'react-modal'
 import { RecoilRoot } from 'recoil'
 import {
     InitialRecoilStateContext,
     InitialState,
 } from 'state/initialRecoilStateContext'
 
+Modal.setAppElement('#app')
+
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <InitialRecoilStateContext.Provider value={pageProps as InitialState}>
-            <RecoilRoot>
-                <Component {...pageProps} />
-            </RecoilRoot>
-        </InitialRecoilStateContext.Provider>
+        <div id="app">
+            <InitialRecoilStateContext.Provider
+                value={pageProps as InitialState}
+            >
+                <RecoilRoot>
+                    <Component {...pageProps} />
+                </RecoilRoot>
+            </InitialRecoilStateContext.Provider>
+        </div>
     )
 }
 
