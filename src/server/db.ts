@@ -2,7 +2,7 @@
 import { Database, open } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
-import { List, Item } from 'types'
+import { List, Item, PostAddItemRequest } from 'types'
 
 import { join, resolve } from 'path'
 
@@ -52,17 +52,28 @@ export async function getList(id: number) {
 
 export async function getItemsForList(listId: number) {
     const db = await getDatabase()
-    return await db.all<Item[]>(`SELECT * FROM items WHERE list_id = :id`, {
-        ':id': listId,
-    })
+    const items: Item[] = (
+        await db.all<Array<Omit<Item, 'listId'> & { list_id: number }>>(
+            `SELECT * FROM items WHERE list_id = :id`,
+            {
+                ':id': listId,
+            },
+        )
+    ).map(item => ({
+        id: item.id,
+        listId: item.list_id,
+        name: item.name,
+        completed: !!item.completed,
+    }))
+    return items
 }
 
-export async function createItem(item: Omit<Item, 'id'>): Promise<Item> {
+export async function createItem(item: PostAddItemRequest): Promise<Item> {
     const db = await getDatabase()
     const results = await db.run(
         `INSERT INTO items (list_id, name, completed) VALUES (:list_id, :name, :completed)`,
         {
-            ':list_id': item.list_id,
+            ':list_id': item.listId,
             ':name': item.name,
             ':completed': item.completed,
         },
@@ -83,7 +94,7 @@ export async function updateItem(item: Item): Promise<void> {
         `UPDATE items SET list_id = :list_id, name = :name, completed = :completed WHERE id = :id`,
         {
             ':id': item.id,
-            ':list_id': item.list_id,
+            ':list_id': item.listId,
             ':name': item.name,
             ':completed': item.completed,
         },

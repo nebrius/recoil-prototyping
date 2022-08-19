@@ -34,7 +34,7 @@ export function AddItem({ currentListId }: AddItemProps) {
 
     function onCreate() {
         console.log(`Creating item named ${name}`)
-        addItem(name)
+        addItem({ name, listId: currentListId, completed: false })
             .then(() => setIsOpen(false))
             .catch(err => {
                 throw err

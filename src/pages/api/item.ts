@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { deleteItem, updateItem } from 'server/db'
+import { createItem } from 'server/db'
 
 export default async function handler(
     req: NextApiRequest,
@@ -8,15 +8,10 @@ export default async function handler(
     const { method } = req
 
     switch (method) {
-        case 'PUT': {
+        case 'POST': {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            await updateItem(req.body)
-            res.status(200).end('ok')
-            break
-        }
-        case 'DELETE': {
-            await deleteItem(parseInt(req.query.id as string, 10))
-            res.status(200).end('ok')
+            const newItem = await createItem(req.body)
+            res.status(200).json(newItem)
             break
         }
         default: {
