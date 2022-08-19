@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
+import { addItemApi } from 'state/item'
+import { useApi } from 'state/lib/api'
 import { List } from 'types'
 
 interface AddItemProps {
@@ -20,6 +22,7 @@ const customStyles = {
 export function AddItem({ currentListId }: AddItemProps) {
     const [modalIsOpen, setIsOpen] = useState(false)
     const [name, setName] = useState('')
+    const addItem = useApi(addItemApi)
 
     function onOpen() {
         setIsOpen(true)
@@ -32,6 +35,7 @@ export function AddItem({ currentListId }: AddItemProps) {
 
     function onCreate() {
         console.log(`Creating item named ${name}`)
+        addItem(name)
     }
 
     return (

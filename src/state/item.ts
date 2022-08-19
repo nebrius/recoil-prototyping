@@ -3,6 +3,8 @@ import { selectorFamily } from 'recoil'
 import { hydratedAtom } from 'state/lib/atom'
 import { Item } from 'types'
 
+import { api } from './lib/api'
+
 const allItems = hydratedAtom<Item[]>({
     key: 'allItems',
     init: ({ items }) => items,
@@ -35,4 +37,22 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
         }
         return items
     },
+})
+
+export const addItemApi = api<string>(async ({ get, set }, newName) => {
+    console.log(`Making API call to create new item ${newName}`)
+
+    // Make API call
+    await new Promise(resolve => setTimeout(resolve))
+    const newItem: Item = {
+        id: 0,
+        // eslint-disable-next-line camelcase
+        list_id: 0,
+        name: newName,
+        completed: false,
+    }
+
+    // Add item to the list of all items
+    const items = get(allItems)
+    set(allItems, [newItem, ...items])
 })
