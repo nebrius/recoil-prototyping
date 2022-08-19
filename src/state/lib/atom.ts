@@ -16,7 +16,10 @@ export type DehydratedAtomOptions<T> = AtomOptions<T> & {
     ): RecoilValue<T> | Promise<T> | Loadable<T> | WrappedValue<T> | T
 }
 
-export type DehydratedAtom<T> = (initialState: InitialState) => RecoilState<T>
+export interface DehydratedAtom<T> {
+    (initialState: InitialState): RecoilState<T>
+    hydratedAtom?: RecoilState<T>
+}
 
 export function dehydratedAtom<T>(
     options: DehydratedAtomOptions<T>,
