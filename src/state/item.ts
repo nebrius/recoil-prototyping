@@ -1,9 +1,8 @@
 import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
-import { selectorFamily, useRecoilValue } from 'recoil'
+import { useRef } from 'react'
+import { selectorFamily, useRecoilState, useRecoilValue } from 'recoil'
 import { dehydratedAtom } from 'state/lib/atom'
 import { Item } from 'types'
-
-import { api } from './lib/api'
 
 const allItems = dehydratedAtom<Item[]>({
     key: 'allItems',
@@ -39,22 +38,25 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
     },
 })
 
-export const addItemApi = api<string>(async ({ get, set }, newName) => {
-    console.log(`Making API call to create new item ${newName}`)
+export function useAddItem() {
+    const [allItemsValues, setAllItems] = useRecoilState(
+        useDehydratedAtom(allItems),
+    )
+    const itemsRef = useRef(allItemsValues)
+    return async (name: string) => {
+        console.log(`Making API call to create new item ${name}`)
 
-    // Make API call
-    await new Promise(resolve => setTimeout(resolve))
-    const newItem: Item = {
-        id: 0,
-        // eslint-disable-next-line camelcase
-        list_id: 0,
-        name: newName,
-        completed: false,
+        // Make API call
+        await new Promise(resolve => setTimeout(resolve))
+        const newItem: Item = {
+            id: 0,
+            // eslint-disable-next-line camelcase
+            list_id: 0,
+            name,
+            completed: false,
+        }
+
+        // Add item to the list of all items
+        setAllItems([newItem, ...itemsRef.current])
     }
-
-    const hydratedAllItems = useDehydratedAtom(allItems)
-
-    // Add item to the list of all items
-    const items = get(hydratedAllItems)
-    set(hydratedAllItems, [newItem, ...items])
-})
+}
