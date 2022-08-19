@@ -7,7 +7,7 @@ import { RecoilRoot } from 'recoil'
 import {
     InitialRecoilStateContext,
     InitialState,
-} from 'state/initialRecoilStateContext'
+} from 'state/lib/initialRecoilStateContext'
 
 Modal.setAppElement('#app')
 

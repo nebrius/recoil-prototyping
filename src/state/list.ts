@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 import { List } from 'types'
 
-import { hydratedAtom } from './atom'
+import { hydratedAtom } from './lib/atom'
 
 export function listAtom(id: number) {
     return hydratedAtom<List>({

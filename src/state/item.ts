@@ -1,6 +1,6 @@
 import { useHydratedRecoilValue } from 'hooks/useHydratedRecoilValue'
 import { selectorFamily } from 'recoil'
-import { hydratedAtom } from 'state/atom'
+import { hydratedAtom } from 'state/lib/atom'
 import { Item } from 'types'
 
 const allItems = hydratedAtom<Item[]>({

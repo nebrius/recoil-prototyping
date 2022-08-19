@@ -4,7 +4,7 @@ import { Metadata } from 'components/todo/metadata'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getItemsForList, getList } from 'server/db'
-import { InitialState } from 'state/initialRecoilStateContext'
+import { InitialState } from 'state/lib/initialRecoilStateContext'
 import { List } from 'types'
 
 interface TodoPageProps extends InitialState {
