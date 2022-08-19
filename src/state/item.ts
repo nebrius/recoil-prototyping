@@ -45,15 +45,10 @@ export function useAddItem() {
     )
     const itemsRef = useRef(allItemsValues)
     return async (body: PostAddItemRequest) => {
-        console.log(`Making API call to create new item ${body.name}`)
-
-        // TODO: Make API call
         const newItem = await post<PostAddItemRequest, PostAddItemResponse>(
             '/api/item',
             body,
         )
-
-        // Add item to the list of all items
-        setAllItems([newItem, ...itemsRef.current])
+        setAllItems([...itemsRef.current, newItem])
     }
 }
