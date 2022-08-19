@@ -1,10 +1,10 @@
 import { atom } from 'recoil'
 import { List } from 'types'
 
-import { hydratedAtom } from './lib/atom'
+import { dehydratedAtom } from './lib/atom'
 
 export function listAtom(id: number) {
-    return hydratedAtom<List>({
+    return dehydratedAtom<List>({
         key: 'list',
         init({ lists }) {
             const list = lists.find(i => i.id === id)

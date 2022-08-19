@@ -1,4 +1,5 @@
 import {
+    DefaultValue,
     GetRecoilValue,
     ResetRecoilState,
     selector,
@@ -21,11 +22,12 @@ export function api<Request>(handler: Handler<Request>) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
         get: () => undefined as any,
         set: (opts, query) => {
-            if ('set' in query && 'get' in query && 'reset' in query) {
+            // Ignore set operations that include default value, since it wasn't called using the setter in useApi
+            if (query instanceof DefaultValue) {
                 return
             }
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            handler(opts, query as Request)
+            handler(opts, query)
         },
     })
 }

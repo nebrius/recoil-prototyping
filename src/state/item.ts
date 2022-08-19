@@ -1,17 +1,17 @@
-import { useHydratedRecoilValue } from 'hooks/useHydratedRecoilValue'
-import { selectorFamily } from 'recoil'
-import { hydratedAtom } from 'state/lib/atom'
+import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
+import { selectorFamily, useRecoilValue } from 'recoil'
+import { dehydratedAtom } from 'state/lib/atom'
 import { Item } from 'types'
 
 import { api } from './lib/api'
 
-const allItems = hydratedAtom<Item[]>({
+const allItems = dehydratedAtom<Item[]>({
     key: 'allItems',
     init: ({ items }) => items,
 })
 
 export function itemAtom(id: number) {
-    return hydratedAtom<Item>({
+    return dehydratedAtom<Item>({
         key: 'item',
         init: ({ items }) => {
             const item = items.find(i => i.id === id)
@@ -29,7 +29,7 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
     key: 'items-in-list',
     get: listId => () => {
         const items: number[] = []
-        const currentItems = useHydratedRecoilValue(allItems)
+        const currentItems = useRecoilValue(useDehydratedAtom(allItems))
         for (const item of currentItems) {
             if (item.list_id === listId) {
                 items.push(item.id)
@@ -52,7 +52,9 @@ export const addItemApi = api<string>(async ({ get, set }, newName) => {
         completed: false,
     }
 
+    const hydratedAllItems = useDehydratedAtom(allItems)
+
     // Add item to the list of all items
-    const items = get(allItems)
-    set(allItems, [newItem, ...items])
+    const items = get(hydratedAllItems)
+    set(hydratedAllItems, [newItem, ...items])
 })
