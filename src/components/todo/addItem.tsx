@@ -43,7 +43,14 @@ export function AddItem({ currentListId }: AddItemProps) {
 
     return (
         <>
-            <button onClick={onOpen}>Add item to list {currentListId}</button>
+            <button onClick={onOpen}>
+                Add item to list {currentListId}
+                <style jsx>{`
+                    button {
+                        margin-bottom: 15px;
+                    }
+                `}</style>
+            </button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={onClose}

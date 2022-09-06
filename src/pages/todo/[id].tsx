@@ -21,8 +21,8 @@ function TodoPage({ currentListId }: TodoPageProps) {
                 />
             </Head>
             <Metadata currentListId={currentListId} />
-            <ItemList currentListId={currentListId} />
             <AddItem currentListId={currentListId} />
+            <ItemList currentListId={currentListId} />
         </div>
     )
 }
