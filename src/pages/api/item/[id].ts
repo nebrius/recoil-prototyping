@@ -11,7 +11,7 @@ export default async function handler(
         case 'PUT': {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             await updateItem(req.body)
-            res.status(200).end('ok')
+            res.status(200).end(JSON.stringify({}))
             break
         }
         case 'DELETE': {

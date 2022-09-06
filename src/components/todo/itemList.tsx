@@ -1,5 +1,10 @@
 import { useRecoilValue } from 'recoil'
-import { itemSelector, itemIdsInListSelector, useDeleteItem } from 'state/item'
+import {
+    itemSelector,
+    itemIdsInListSelector,
+    useDeleteItem,
+    useToggleItemCompleted,
+} from 'state/item'
 import { List } from 'types'
 
 interface ItemListProps {
@@ -15,8 +20,10 @@ const Item = ({ id }: { id: number }) => {
         void deleteItem(item)
     }
 
+    const toggleItemCompleted = useToggleItemCompleted()
     function onChecked() {
-        console.log('Checked')
+        console.log(`Toggling item ${id} completed`)
+        void toggleItemCompleted(item)
     }
     return (
         <li className="item">

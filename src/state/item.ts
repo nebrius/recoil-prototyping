@@ -62,6 +62,15 @@ export function useAddItem() {
     }
 }
 
+export function useDeleteItem() {
+    const [allItemsValues, setAllItems] = useRecoilState(allItems)
+    const itemsRef = useRef(allItemsValues)
+    return async (item: Item) => {
+        await del(`/api/item/${item.id}`)
+        setAllItems(itemsRef.current.filter(i => i.id !== item.id))
+    }
+}
+
 export function useToggleItemCompleted() {
     const [allItemsValues, setAllItems] = useRecoilState(allItems)
     const itemsRef = useRef(allItemsValues)
@@ -79,14 +88,5 @@ export function useToggleItemCompleted() {
                 return updateItem
             }),
         )
-    }
-}
-
-export function useDeleteItem() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItems)
-    const itemsRef = useRef(allItemsValues)
-    return async (item: Item) => {
-        await del(`/api/item/${item.id}`)
-        setAllItems(itemsRef.current.filter(i => i.id !== item.id))
     }
 }
