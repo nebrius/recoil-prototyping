@@ -7,6 +7,10 @@ import { initialStateAtom } from './initialState'
 
 const allItems = atom({
     key: 'allItems',
+
+    // We set the default to a selector so that we can grab the initial value
+    // from the initial value atom, which is set during first render in the
+    // Recoil root in _app.tsx
     default: selector({
         key: 'itemInitializationSelector',
         get: ({ get }) => {
