@@ -16,5 +16,4 @@ export interface InitialState {
 }
 
 export type PostAddItemRequest = Omit<Item, 'id'>
-
 export type PostAddItemResponse = Item

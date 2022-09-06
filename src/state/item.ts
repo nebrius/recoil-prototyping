@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { atom, selector, selectorFamily, useRecoilState } from 'recoil'
 import { Item, PostAddItemRequest, PostAddItemResponse } from 'types'
-import { post } from 'utils'
+import { del, post, put } from 'utils'
 
 import { initialStateAtom } from './initialState'
 
@@ -59,5 +59,34 @@ export function useAddItem() {
             body,
         )
         setAllItems([...itemsRef.current, newItem])
+    }
+}
+
+export function useToggleItemCompleted() {
+    const [allItemsValues, setAllItems] = useRecoilState(allItems)
+    const itemsRef = useRef(allItemsValues)
+    return async (item: Item) => {
+        const updateItem = {
+            ...item,
+            completed: !item.completed,
+        }
+        await put(`/api/item/${item.id}`, updateItem)
+        setAllItems(
+            itemsRef.current.map(i => {
+                if (i.id !== item.id) {
+                    return i
+                }
+                return updateItem
+            }),
+        )
+    }
+}
+
+export function useDeleteItem() {
+    const [allItemsValues, setAllItems] = useRecoilState(allItems)
+    const itemsRef = useRef(allItemsValues)
+    return async (item: Item) => {
+        await del(`/api/item/${item.id}`)
+        setAllItems(itemsRef.current.filter(i => i.id !== item.id))
     }
 }

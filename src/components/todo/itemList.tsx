@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { itemSelector, itemIdsInListSelector } from 'state/item'
+import { itemSelector, itemIdsInListSelector, useDeleteItem } from 'state/item'
 import { List } from 'types'
 
 interface ItemListProps {
@@ -7,15 +7,17 @@ interface ItemListProps {
 }
 
 const Item = ({ id }: { id: number }) => {
+    const item = useRecoilValue(itemSelector(id))
+
+    const deleteItem = useDeleteItem()
     function onDelete() {
-        console.log('Deleted')
+        console.log(`Deleting item ${id}`)
+        void deleteItem(item)
     }
 
     function onChecked() {
         console.log('Checked')
     }
-
-    const item = useRecoilValue(itemSelector(id))
     return (
         <li className="item">
             <input
