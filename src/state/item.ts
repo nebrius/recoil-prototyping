@@ -1,6 +1,6 @@
 import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
 import { useRef } from 'react'
-import { selectorFamily, useRecoilState, useRecoilValue } from 'recoil'
+import { selectorFamily, useRecoilState } from 'recoil'
 import { dehydratedAtom } from 'state/lib/atom'
 import { Item, PostAddItemRequest, PostAddItemResponse } from 'types'
 import { post } from 'utils'
@@ -27,16 +27,18 @@ export function itemAtom(id: number) {
 
 export const itemIdsInListSelector = selectorFamily<number[], number>({
     key: 'items-in-list',
-    get: listId => () => {
-        const items: number[] = []
-        const currentItems = useRecoilValue(useDehydratedAtom(allItems))
-        for (const item of currentItems) {
-            if (item.listId === listId) {
-                items.push(item.id)
+    get:
+        listId =>
+        ({ get }) => {
+            const items: number[] = []
+            const currentItems = get(useDehydratedAtom(allItems))
+            for (const item of currentItems) {
+                if (item.listId === listId) {
+                    items.push(item.id)
+                }
             }
-        }
-        return items
-    },
+            return items
+        },
 })
 
 export function useAddItem() {
