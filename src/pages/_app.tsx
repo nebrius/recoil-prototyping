@@ -4,23 +4,20 @@
 import type { AppProps } from 'next/app'
 import Modal from 'react-modal'
 import { RecoilRoot } from 'recoil'
-import {
-    InitialRecoilStateContext,
-    InitialState,
-} from 'state/lib/initialRecoilStateContext'
+import { initialStateAtom } from 'state/initialState'
 
 Modal.setAppElement('#app')
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <div id="app">
-            <InitialRecoilStateContext.Provider
-                value={pageProps as InitialState}
+            <RecoilRoot
+                initializeState={({ set }) => {
+                    set(initialStateAtom, pageProps)
+                }}
             >
-                <RecoilRoot>
-                    <Component {...pageProps} />
-                </RecoilRoot>
-            </InitialRecoilStateContext.Provider>
+                <Component {...pageProps} />
+            </RecoilRoot>
         </div>
     )
 }

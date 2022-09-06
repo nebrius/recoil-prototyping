@@ -1,38 +1,28 @@
-import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
 import { useRef } from 'react'
-import { atom, selectorFamily, useRecoilState, useRecoilValue } from 'recoil'
-import { dehydratedAtom } from 'state/lib/atom'
+import { atom, selector, selectorFamily, useRecoilState } from 'recoil'
 import { Item, PostAddItemRequest, PostAddItemResponse } from 'types'
 import { post } from 'utils'
 
-// Note: dehydrated atoms must _not_ be families, such as itemAtom, since they
-// evolve over time and we may try and grab an item that was added after
-// initialization
-const allItems = dehydratedAtom<Item[]>({
-    key: 'allItems',
-    init: ({ items }) => items,
-})
+import { initialStateAtom } from './initialState'
 
-export function itemAtom(id: number) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const items = useRecoilValue(useDehydratedAtom(allItems))
-    const item = items.find(i => i.id === id)
-    if (!item) {
-        throw new Error(`Could not find item with id ${id}`)
-    }
-    return atom<Item>({
-        key: 'item',
-        default: item,
-    })
-}
+const allItems = atom({
+    key: 'allItems',
+    default: selector({
+        key: 'itemInitializationSelector',
+        get: ({ get }) => {
+            const { items } = get(initialStateAtom)
+            return items
+        },
+    }),
+})
 
 export const itemIdsInListSelector = selectorFamily<number[], number>({
     key: 'items-in-list',
     get:
         listId =>
         ({ get }) => {
+            const currentItems = get(allItems)
             const items: number[] = []
-            const currentItems = get(useDehydratedAtom(allItems))
             for (const item of currentItems) {
                 if (item.listId === listId) {
                     items.push(item.id)
@@ -42,10 +32,22 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
         },
 })
 
+export const itemSelector = selectorFamily<Item, number>({
+    key: 'item',
+    get:
+        id =>
+        ({ get }) => {
+            const items = get(allItems)
+            const item = items.find(i => i.id === id)
+            if (!item) {
+                throw new Error(`Could not find item with id ${id}`)
+            }
+            return item
+        },
+})
+
 export function useAddItem() {
-    const [allItemsValues, setAllItems] = useRecoilState(
-        useDehydratedAtom(allItems),
-    )
+    const [allItemsValues, setAllItems] = useRecoilState(allItems)
     const itemsRef = useRef(allItemsValues)
     return async (body: PostAddItemRequest) => {
         const newItem = await post<PostAddItemRequest, PostAddItemResponse>(

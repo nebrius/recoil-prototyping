@@ -1,6 +1,5 @@
-import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
 import { useRecoilValue } from 'recoil'
-import { listAtom } from 'state/list'
+import { listSelector } from 'state/list'
 import { List } from 'types'
 
 interface MetadataProps {
@@ -8,6 +7,6 @@ interface MetadataProps {
 }
 
 export function Metadata({ currentListId }: MetadataProps) {
-    const { name } = useRecoilValue(useDehydratedAtom(listAtom(currentListId)))
+    const { name } = useRecoilValue(listSelector(currentListId))
     return <h1>{name}</h1>
 }

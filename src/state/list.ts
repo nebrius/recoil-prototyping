@@ -1,12 +1,25 @@
-import { atom } from 'recoil'
+import { atom, selector, selectorFamily } from 'recoil'
 import { List } from 'types'
 
-import { dehydratedAtom } from './lib/atom'
+import { initialStateAtom } from './initialState'
 
-export function listAtom(id: number) {
-    return dehydratedAtom<List>({
-        key: 'list',
-        init({ lists }) {
+const allLists = atom({
+    key: 'allLists',
+    default: selector({
+        key: 'allListsInitializer',
+        get: ({ get }) => {
+            const { lists } = get(initialStateAtom)
+            return lists
+        },
+    }),
+})
+
+export const listSelector = selectorFamily<List, number>({
+    key: 'list',
+    get:
+        id =>
+        ({ get }) => {
+            const lists = get(allLists)
             const list = lists.find(i => i.id === id)
             if (!list) {
                 throw new Error(
@@ -15,8 +28,7 @@ export function listAtom(id: number) {
             }
             return list
         },
-    })
-}
+})
 
 export const currentListAtom = atom<List | null>({
     key: 'currentList',

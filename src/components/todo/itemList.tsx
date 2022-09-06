@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { itemAtom, itemIdsInListSelector } from 'state/item'
+import { itemSelector, itemIdsInListSelector } from 'state/item'
 import { List } from 'types'
 
 interface ItemListProps {
@@ -7,7 +7,7 @@ interface ItemListProps {
 }
 
 const Item = ({ id }: { id: number }) => {
-    const item = useRecoilValue(itemAtom(id))
+    const item = useRecoilValue(itemSelector(id))
     return (
         <li>
             <input
