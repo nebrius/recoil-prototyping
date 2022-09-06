@@ -1,4 +1,3 @@
-import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
 import { useRecoilValue } from 'recoil'
 import { itemAtom, itemIdsInListSelector } from 'state/item'
 import { List } from 'types'
@@ -8,7 +7,7 @@ interface ItemListProps {
 }
 
 const Item = ({ id }: { id: number }) => {
-    const item = useRecoilValue(useDehydratedAtom(itemAtom(id)))
+    const item = useRecoilValue(itemAtom(id))
     return (
         <li>
             <input

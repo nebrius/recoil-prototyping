@@ -1,27 +1,28 @@
 import { useDehydratedAtom } from 'hooks/useDehydratedAtom'
 import { useRef } from 'react'
-import { selectorFamily, useRecoilState } from 'recoil'
+import { atom, selectorFamily, useRecoilState, useRecoilValue } from 'recoil'
 import { dehydratedAtom } from 'state/lib/atom'
 import { Item, PostAddItemRequest, PostAddItemResponse } from 'types'
 import { post } from 'utils'
 
+// Note: dehydrated atoms must _not_ be families, such as itemAtom, since they
+// evolve over time and we may try and grab an item that was added after
+// initialization
 const allItems = dehydratedAtom<Item[]>({
     key: 'allItems',
     init: ({ items }) => items,
 })
 
 export function itemAtom(id: number) {
-    return dehydratedAtom<Item>({
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const items = useRecoilValue(useDehydratedAtom(allItems))
+    const item = items.find(i => i.id === id)
+    if (!item) {
+        throw new Error(`Could not find item with id ${id}`)
+    }
+    return atom<Item>({
         key: 'item',
-        init: ({ items }) => {
-            const item = items.find(i => i.id === id)
-            if (!item) {
-                throw new Error(
-                    `Could not find item with id ${id} in initial state`,
-                )
-            }
-            return item
-        },
+        default: item,
     })
 }
 
