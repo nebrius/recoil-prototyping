@@ -42,7 +42,7 @@ export function AddItem() {
     return (
         <>
             <button className="addButton" onClick={onOpen}>
-                Add item to list {currentListId}
+                Add item
                 <style jsx>{`
                     .addButton {
                         margin-bottom: 15px;
