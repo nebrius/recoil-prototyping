@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useCallback } from 'react'
 import { atom, selector, selectorFamily, useRecoilState } from 'recoil'
 import { Item, PostAddItemRequest, PostAddItemResponse } from 'types'
 import { del, post, put } from 'utils'
@@ -52,41 +52,47 @@ export const itemSelector = selectorFamily<Item, number>({
 
 export function useAddItem() {
     const [allItemsValues, setAllItems] = useRecoilState(allItems)
-    const itemsRef = useRef(allItemsValues)
-    return async (body: PostAddItemRequest) => {
-        const newItem = await post<PostAddItemRequest, PostAddItemResponse>(
-            '/api/item',
-            body,
-        )
-        setAllItems([...itemsRef.current, newItem])
-    }
+    return useCallback(
+        async (body: PostAddItemRequest) => {
+            const newItem = await post<PostAddItemRequest, PostAddItemResponse>(
+                '/api/item',
+                body,
+            )
+            setAllItems([...allItemsValues, newItem])
+        },
+        [allItemsValues, setAllItems],
+    )
 }
 
 export function useDeleteItem() {
     const [allItemsValues, setAllItems] = useRecoilState(allItems)
-    const itemsRef = useRef(allItemsValues)
-    return async (item: Item) => {
-        await del(`/api/item/${item.id}`)
-        setAllItems(itemsRef.current.filter(i => i.id !== item.id))
-    }
+    return useCallback(
+        async (item: Item) => {
+            await del(`/api/item/${item.id}`)
+            setAllItems(allItemsValues.filter(i => i.id !== item.id))
+        },
+        [allItemsValues, setAllItems],
+    )
 }
 
 export function useToggleItemCompleted() {
     const [allItemsValues, setAllItems] = useRecoilState(allItems)
-    const itemsRef = useRef(allItemsValues)
-    return async (item: Item) => {
-        const updateItem = {
-            ...item,
-            completed: !item.completed,
-        }
-        await put(`/api/item/${item.id}`, updateItem)
-        setAllItems(
-            itemsRef.current.map(i => {
-                if (i.id !== item.id) {
-                    return i
-                }
-                return updateItem
-            }),
-        )
-    }
+    return useCallback(
+        async (item: Item) => {
+            const updateItem = {
+                ...item,
+                completed: !item.completed,
+            }
+            await put(`/api/item/${item.id}`, updateItem)
+            setAllItems(
+                allItemsValues.map(i => {
+                    if (i.id !== item.id) {
+                        return i
+                    }
+                    return updateItem
+                }),
+            )
+        },
+        [allItemsValues, setAllItems],
+    )
 }
