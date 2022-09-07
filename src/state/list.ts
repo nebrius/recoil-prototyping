@@ -1,5 +1,8 @@
-import { atom, selector } from 'recoil'
+import { useCallback } from 'react'
+import { atom, selector, useRecoilState } from 'recoil'
+import { PostAddListRequest, PostAddListResponse } from 'types/api'
 import { HomePageInitialState, ListPageInitialState } from 'types/hydration'
+import { post } from 'utils'
 
 import { initialStateAtom } from './initialState'
 
@@ -22,3 +25,19 @@ export const currentListAtom = atom({
         get: ({ get }) => (get(initialStateAtom) as ListPageInitialState).list,
     }),
 })
+
+// Hooks for working with state
+
+export function useAddList() {
+    const [allListsValues, setAllLists] = useRecoilState(allListsAtom)
+    return useCallback(
+        async (body: PostAddListRequest) => {
+            const newItem = await post<PostAddListRequest, PostAddListResponse>(
+                '/api/list',
+                body,
+            )
+            setAllLists([...allListsValues, newItem])
+        },
+        [allListsValues, setAllLists],
+    )
+}

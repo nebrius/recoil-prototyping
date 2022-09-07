@@ -2,7 +2,7 @@
 import { Database, open } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
-import { PostAddItemRequest } from 'types/api'
+import { PostAddItemRequest, PostAddListRequest } from 'types/api'
 import { Item } from 'types/item'
 import { List } from 'types/list'
 
@@ -111,6 +111,21 @@ export async function deleteItem(id: number) {
     await db.run(`DELETE FROM items WHERE id = :id`, {
         ':id': id,
     })
+}
+
+export async function createList(list: PostAddListRequest): Promise<List> {
+    const db = await getDatabase()
+    const results = await db.run(`INSERT INTO lists (name) VALUES (:name)`, {
+        ':name': list.name,
+    })
+    const listId = results.lastID
+    if (!listId) {
+        throw new Error(`Error inserting row`)
+    }
+    return {
+        ...list,
+        id: listId,
+    }
 }
 
 export async function getCurrentUser(): Promise<User> {

@@ -48,7 +48,7 @@ const Item = ({ id }: { id: number }) => {
     )
 }
 
-export function ItemList() {
+export function Items() {
     const currentListId = useRecoilValue(currentListAtom).id
     const itemIds = useRecoilValue(itemIdsInListSelector(currentListId))
     return (

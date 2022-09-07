@@ -1,5 +1,5 @@
 import { AddItem } from 'components/listPage/addItem'
-import { ItemList } from 'components/listPage/itemList'
+import { Items } from 'components/listPage/items'
 import { Metadata } from 'components/listPage/metadata'
 import { SiteHeader } from 'components/siteHeader'
 import type { GetServerSideProps } from 'next'
@@ -21,7 +21,7 @@ function TodoPage({ list }: ListPageInitialState) {
             <div className="container">
                 <Metadata />
                 <AddItem />
-                <ItemList />
+                <Items />
                 <style jsx>{`
                     .container {
                         padding: 0px 20px;

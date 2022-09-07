@@ -1,17 +1,27 @@
+import { AddList } from 'components/homePage/addList'
+import { Lists } from 'components/homePage/lists'
 import { SiteHeader } from 'components/siteHeader'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getCurrentUser, getLists } from 'server/db'
 import { HomePageInitialState } from 'types/hydration'
 
-function HomePage({ lists }: HomePageInitialState) {
+function HomePage() {
     return (
         <div>
             <Head>
                 <title>Multi-todo</title>
             </Head>
             <SiteHeader />
-            {JSON.stringify(lists)}
+            <div className="container">
+                <AddList />
+                <Lists />
+                <style jsx>{`
+                    .container {
+                        padding: 20px;
+                    }
+                `}</style>
+            </div>
         </div>
     )
 }

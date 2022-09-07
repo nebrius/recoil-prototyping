@@ -7,8 +7,8 @@ import { del, post, put } from 'utils'
 
 import { initialStateAtom } from './initialState'
 
-const allItems = atom({
-    key: 'allItems',
+const allItemsAtom = atom({
+    key: 'allItemsAtom',
 
     // We set the default to a selector so that we can grab the initial value
     // from the initial value atom, which is set during first render in the
@@ -27,7 +27,7 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
     get:
         listId =>
         ({ get }) => {
-            const currentItems = get(allItems)
+            const currentItems = get(allItemsAtom)
             const items: number[] = []
             for (const item of currentItems) {
                 if (item.listId === listId) {
@@ -43,7 +43,7 @@ export const itemSelector = selectorFamily<Item, number>({
     get:
         id =>
         ({ get }) => {
-            const items = get(allItems)
+            const items = get(allItemsAtom)
             const item = items.find(i => i.id === id)
             if (!item) {
                 throw new Error(`Could not find item with id ${id}`)
@@ -55,7 +55,7 @@ export const itemSelector = selectorFamily<Item, number>({
 // Hooks for working with state
 
 export function useAddItem() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItems)
+    const [allItemsValues, setAllItems] = useRecoilState(allItemsAtom)
     return useCallback(
         async (body: PostAddItemRequest) => {
             const newItem = await post<PostAddItemRequest, PostAddItemResponse>(
@@ -69,7 +69,7 @@ export function useAddItem() {
 }
 
 export function useDeleteItem() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItems)
+    const [allItemsValues, setAllItems] = useRecoilState(allItemsAtom)
     return useCallback(
         async (item: Item) => {
             await del(`/api/item/${item.id}`)
@@ -80,7 +80,7 @@ export function useDeleteItem() {
 }
 
 export function useToggleItemCompleted() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItems)
+    const [allItemsValues, setAllItems] = useRecoilState(allItemsAtom)
     return useCallback(
         async (item: Item) => {
             const updateItem = {
