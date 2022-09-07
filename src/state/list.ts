@@ -1,36 +1,24 @@
-import { atom, selector, selectorFamily } from 'recoil'
-import { List } from 'types'
+import { atom, selector } from 'recoil'
+import { HomePageInitialState, ListPageInitialState } from 'types/hydration'
 
 import { initialStateAtom } from './initialState'
 
-const allLists = atom({
-    key: 'allLists',
+export const allListsAtom = atom({
+    key: 'allListsAtom',
     default: selector({
-        key: 'allListsInitializer',
-        get: ({ get }) => {
-            const { lists } = get(initialStateAtom)
-            return lists
-        },
+        key: 'allListsAtomInitializer',
+        // TODO: I don't love this, but not sure of another way to do this
+        // without having a giant switch statement in _app.tsx that switches on
+        // the current route and sets a per-page initial state atom. Is that
+        // preferable?
+        get: ({ get }) => (get(initialStateAtom) as HomePageInitialState).lists,
     }),
 })
 
-export const listSelector = selectorFamily<List, number>({
-    key: 'list',
-    get:
-        id =>
-        ({ get }) => {
-            const lists = get(allLists)
-            const list = lists.find(i => i.id === id)
-            if (!list) {
-                throw new Error(
-                    `Could not find item with id ${id} in initial state`,
-                )
-            }
-            return list
-        },
-})
-
-export const currentListAtom = atom<List | null>({
-    key: 'currentList',
-    default: null,
+export const currentListAtom = atom({
+    key: 'currentListAtom',
+    default: selector({
+        key: 'currentListAtomInitializer',
+        get: ({ get }) => (get(initialStateAtom) as ListPageInitialState).list,
+    }),
 })

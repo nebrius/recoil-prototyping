@@ -5,11 +5,7 @@ import {
     useDeleteItem,
     useToggleItemCompleted,
 } from 'state/item'
-import { List } from 'types'
-
-interface ItemListProps {
-    currentListId: List['id']
-}
+import { currentListAtom } from 'state/list'
 
 const Item = ({ id }: { id: number }) => {
     const item = useRecoilValue(itemSelector(id))
@@ -52,7 +48,8 @@ const Item = ({ id }: { id: number }) => {
     )
 }
 
-export function ItemList({ currentListId }: ItemListProps) {
+export function ItemList() {
+    const currentListId = useRecoilValue(currentListAtom).id
     const itemIds = useRecoilValue(itemIdsInListSelector(currentListId))
     return (
         <div>

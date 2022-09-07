@@ -2,7 +2,12 @@
 import { Database, open } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
-import { List, Item, PostAddItemRequest } from 'types'
+import { PostAddItemRequest } from 'types/api'
+import { Item } from 'types/item'
+import { List } from 'types/list'
+
+import { User } from 'types/user'
+import { delay } from 'utils'
 
 import { join, resolve } from 'path'
 
@@ -106,4 +111,12 @@ export async function deleteItem(id: number) {
     await db.run(`DELETE FROM items WHERE id = :id`, {
         ':id': id,
     })
+}
+
+export async function getCurrentUser(): Promise<User> {
+    await delay(1)
+    return {
+        name: 'Philip J Fry',
+        email: 'fry@aol.com',
+    }
 }

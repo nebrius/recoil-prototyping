@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
+import { useRecoilValue } from 'recoil'
 import { useAddItem } from 'state/item'
-import { List } from 'types'
-
-interface AddItemProps {
-    currentListId: List['id']
-}
+import { currentListAtom } from 'state/list'
 
 const customStyles = {
     content: {
@@ -18,7 +15,8 @@ const customStyles = {
     },
 }
 
-export function AddItem({ currentListId }: AddItemProps) {
+export function AddItem() {
+    const currentListId = useRecoilValue(currentListAtom).id
     const [modalIsOpen, setIsOpen] = useState(false)
     const [name, setName] = useState('')
     const addItem = useAddItem()

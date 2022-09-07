@@ -38,6 +38,10 @@ export async function del(endpoint: string): Promise<void> {
     })
 }
 
+export function delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 export const IS_BROWSER = !!(
     typeof window !== 'undefined' &&
     window.document &&

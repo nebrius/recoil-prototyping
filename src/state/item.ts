@@ -1,6 +1,8 @@
 import { useCallback } from 'react'
 import { atom, selector, selectorFamily, useRecoilState } from 'recoil'
-import { Item, PostAddItemRequest, PostAddItemResponse } from 'types'
+import { PostAddItemRequest, PostAddItemResponse } from 'types/api'
+import { ListPageInitialState } from 'types/hydration'
+import { Item } from 'types/item'
 import { del, post, put } from 'utils'
 
 import { initialStateAtom } from './initialState'
@@ -12,14 +14,14 @@ const allItems = atom({
     // from the initial value atom, which is set during first render in the
     // Recoil root in _app.tsx
     default: selector({
-        key: 'itemInitializationSelector',
-        get: ({ get }) => {
-            const { items } = get(initialStateAtom)
-            return items
-        },
+        key: 'allItemsInitializer',
+        get: ({ get }) => (get(initialStateAtom) as ListPageInitialState).items,
     }),
 })
 
+// Note: normally we'd just have the backend only return items associated with a
+// list, but that would render this selector unecessary, so we send them all so
+// we can have a nice example of a selector
 export const itemIdsInListSelector = selectorFamily<number[], number>({
     key: 'items-in-list',
     get:
@@ -49,6 +51,8 @@ export const itemSelector = selectorFamily<Item, number>({
             return item
         },
 })
+
+// Hooks for working with state
 
 export function useAddItem() {
     const [allItemsValues, setAllItems] = useRecoilState(allItems)

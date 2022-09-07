@@ -1,19 +1,16 @@
+import { SiteHeader } from 'components/header'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { getLists } from 'server/db'
-import { List } from 'types'
+import { getCurrentUser, getLists } from 'server/db'
+import { HomePageInitialState } from 'types/hydration'
 
-interface HomePageProps {
-    lists: List[]
-}
-
-function HomePage({ lists }: HomePageProps) {
+function HomePage({ lists }: HomePageInitialState) {
     return (
         <div>
             <Head>
                 <title>Multi-todo</title>
             </Head>
-            Home
+            <SiteHeader />
             {JSON.stringify(lists)}
         </div>
     )
@@ -22,12 +19,13 @@ function HomePage({ lists }: HomePageProps) {
 export default HomePage
 
 export const getServerSideProps: GetServerSideProps<
-    HomePageProps
+    HomePageInitialState
 > = async () => {
     const lists = await getLists()
-    return {
-        props: {
-            lists,
-        },
+    const currentUser = await getCurrentUser()
+    const props: HomePageInitialState = {
+        lists,
+        currentUser,
     }
+    return { props }
 }
