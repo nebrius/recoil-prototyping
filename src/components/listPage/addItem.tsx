@@ -41,10 +41,10 @@ export function AddItem() {
 
     return (
         <>
-            <button onClick={onOpen}>
+            <button className="addButton" onClick={onOpen}>
                 Add item to list {currentListId}
                 <style jsx>{`
-                    button {
+                    .addButton {
                         margin-bottom: 15px;
                     }
                 `}</style>

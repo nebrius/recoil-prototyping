@@ -1,7 +1,7 @@
-import { SiteHeader } from 'components/header'
 import { AddItem } from 'components/listPage/addItem'
 import { ItemList } from 'components/listPage/itemList'
 import { Metadata } from 'components/listPage/metadata'
+import { SiteHeader } from 'components/siteHeader'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getCurrentUser, getItemsForList, getList } from 'server/db'
@@ -18,9 +18,16 @@ function TodoPage({ list }: ListPageInitialState) {
                 />
             </Head>
             <SiteHeader />
-            <Metadata />
-            <AddItem />
-            <ItemList />
+            <div className="container">
+                <Metadata />
+                <AddItem />
+                <ItemList />
+                <style jsx>{`
+                    .container {
+                        padding: 0px 20px;
+                    }
+                `}</style>
+            </div>
         </div>
     )
 }

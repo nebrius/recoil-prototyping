@@ -1,4 +1,4 @@
-import { SiteHeader } from 'components/header'
+import { SiteHeader } from 'components/siteHeader'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getCurrentUser, getLists } from 'server/db'

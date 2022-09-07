@@ -18,6 +18,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             >
                 <Component {...pageProps} />
             </RecoilRoot>
+            <style jsx global>{`
+                body {
+                    margin: 0;
+                }
+            `}</style>
         </div>
     )
 }
