@@ -37,7 +37,7 @@ export function SiteHeader() {
     }
 
     return (
-        <div className="headerContainer">
+        <header className="headerContainer">
             <div className="headerTitleContainer">
                 <Link href="/">
                     <a className="headerTitle">Recoil Prototyping</a>
@@ -75,6 +75,6 @@ export function SiteHeader() {
                     text-decoration: none;
                 }
             `}</style>
-        </div>
+        </header>
     )
 }

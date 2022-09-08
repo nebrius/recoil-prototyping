@@ -128,10 +128,12 @@ export async function createList(list: PostAddListRequest): Promise<List> {
     }
 }
 
+export const TEST_USER: User = {
+    name: 'Philip J Fry',
+    email: 'fry@aol.com',
+}
+
 export async function getCurrentUser(): Promise<User> {
     await delay(1)
-    return {
-        name: 'Philip J Fry',
-        email: 'fry@aol.com',
-    }
+    return TEST_USER
 }
