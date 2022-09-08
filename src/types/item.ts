@@ -4,3 +4,5 @@ export interface Item {
     name: string
     completed: boolean
 }
+
+export type ItemFilter = 'all' | 'completed' | 'uncompleted'

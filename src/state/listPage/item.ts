@@ -4,6 +4,8 @@ import { PostAddItemRequest, PostAddItemResponse } from 'types/api'
 import { Item } from 'types/item'
 import { del, post, put } from 'utils'
 
+import { filterAtom } from './filter'
+
 import { initialListPageStateSelector } from './initialState'
 
 const allItemsAtom = atom({
@@ -27,10 +29,28 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
         listId =>
         ({ get }) => {
             const currentItems = get(allItemsAtom)
+            const filter = get(filterAtom)
             const items: number[] = []
             for (const item of currentItems) {
                 if (item.listId === listId) {
-                    items.push(item.id)
+                    switch (filter) {
+                        case 'all': {
+                            items.push(item.id)
+                            break
+                        }
+                        case 'completed': {
+                            if (item.completed) {
+                                items.push(item.id)
+                            }
+                            break
+                        }
+                        case 'uncompleted': {
+                            if (!item.completed) {
+                                items.push(item.id)
+                            }
+                            break
+                        }
+                    }
                 }
             }
             return items
@@ -54,32 +74,32 @@ export const itemSelector = selectorFamily<Item, number>({
 // Hooks for working with state
 
 export function useAddItem() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItemsAtom)
+    const [allItems, setAllItems] = useRecoilState(allItemsAtom)
     return useCallback(
         async (body: PostAddItemRequest) => {
             const newItem = await post<PostAddItemRequest, PostAddItemResponse>(
                 '/api/item',
                 body,
             )
-            setAllItems([...allItemsValues, newItem])
+            setAllItems([...allItems, newItem])
         },
-        [allItemsValues, setAllItems],
+        [allItems, setAllItems],
     )
 }
 
 export function useDeleteItem() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItemsAtom)
+    const [allItems, setAllItems] = useRecoilState(allItemsAtom)
     return useCallback(
         async (item: Item) => {
             await del(`/api/item/${item.id}`)
-            setAllItems(allItemsValues.filter(i => i.id !== item.id))
+            setAllItems(allItems.filter(i => i.id !== item.id))
         },
-        [allItemsValues, setAllItems],
+        [allItems, setAllItems],
     )
 }
 
 export function useToggleItemCompleted() {
-    const [allItemsValues, setAllItems] = useRecoilState(allItemsAtom)
+    const [allItems, setAllItems] = useRecoilState(allItemsAtom)
     return useCallback(
         async (item: Item) => {
             const updateItem = {
@@ -88,7 +108,7 @@ export function useToggleItemCompleted() {
             }
             await put(`/api/item/${item.id}`, updateItem)
             setAllItems(
-                allItemsValues.map(i => {
+                allItems.map(i => {
                     if (i.id !== item.id) {
                         return i
                     }
@@ -96,6 +116,6 @@ export function useToggleItemCompleted() {
                 }),
             )
         },
-        [allItemsValues, setAllItems],
+        [allItems, setAllItems],
     )
 }

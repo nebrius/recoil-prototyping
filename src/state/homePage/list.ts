@@ -16,15 +16,15 @@ export const allListsAtom = atom({
 // Hooks for working with state
 
 export function useAddList() {
-    const [allListsValues, setAllLists] = useRecoilState(allListsAtom)
+    const [allLists, setAllLists] = useRecoilState(allListsAtom)
     return useCallback(
         async (body: PostAddListRequest) => {
             const newItem = await post<PostAddListRequest, PostAddListResponse>(
                 '/api/list',
                 body,
             )
-            setAllLists([...allListsValues, newItem])
+            setAllLists([...allLists, newItem])
         },
-        [allListsValues, setAllLists],
+        [allLists, setAllLists],
     )
 }

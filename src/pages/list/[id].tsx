@@ -1,4 +1,5 @@
 import { AddItem } from 'components/listPage/addItem'
+import { Filter } from 'components/listPage/filter'
 import { Items } from 'components/listPage/items'
 import { Metadata } from 'components/listPage/metadata'
 import { SiteHeader } from 'components/siteHeader'
@@ -21,6 +22,7 @@ function TodoPage({ list }: ListPageInitialState) {
             <div className="container">
                 <Metadata />
                 <AddItem />
+                <Filter />
                 <Items />
                 <style jsx>{`
                     .container {
