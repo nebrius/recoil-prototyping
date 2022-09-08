@@ -1,11 +1,10 @@
 import { useCallback } from 'react'
 import { atom, selector, selectorFamily, useRecoilState } from 'recoil'
 import { PostAddItemRequest, PostAddItemResponse } from 'types/api'
-import { ListPageInitialState } from 'types/hydration'
 import { Item } from 'types/item'
 import { del, post, put } from 'utils'
 
-import { initialStateAtom } from './initialState'
+import { initialListPageStateSelector } from './initialState'
 
 const allItemsAtom = atom({
     key: 'allItemsAtom',
@@ -15,7 +14,7 @@ const allItemsAtom = atom({
     // Recoil root in _app.tsx
     default: selector({
         key: 'allItemsInitializer',
-        get: ({ get }) => (get(initialStateAtom) as ListPageInitialState).items,
+        get: ({ get }) => get(initialListPageStateSelector).items,
     }),
 })
 

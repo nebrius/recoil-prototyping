@@ -1,20 +1,18 @@
 import { useCallback } from 'react'
 import { atom, selector, useRecoilState } from 'recoil'
 import { PostAddListRequest, PostAddListResponse } from 'types/api'
-import { HomePageInitialState, ListPageInitialState } from 'types/hydration'
 import { post } from 'utils'
 
-import { initialStateAtom } from './initialState'
+import {
+    initialHomePageStateSelector,
+    initialListPageStateSelector,
+} from './initialState'
 
 export const allListsAtom = atom({
     key: 'allListsAtom',
     default: selector({
         key: 'allListsAtomInitializer',
-        // TODO: I don't love this, but not sure of another way to do this
-        // without having a giant switch statement in _app.tsx that switches on
-        // the current route and sets a per-page initial state atom. Is that
-        // preferable?
-        get: ({ get }) => (get(initialStateAtom) as HomePageInitialState).lists,
+        get: ({ get }) => get(initialHomePageStateSelector).lists,
     }),
 })
 
@@ -22,7 +20,7 @@ export const currentListAtom = atom({
     key: 'currentListAtom',
     default: selector({
         key: 'currentListAtomInitializer',
-        get: ({ get }) => (get(initialStateAtom) as ListPageInitialState).list,
+        get: ({ get }) => get(initialListPageStateSelector).list,
     }),
 })
 

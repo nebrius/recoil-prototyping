@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Modal from 'react-modal'
 import { RecoilRoot } from 'recoil'
-import { initialStateAtom } from 'state/initialState'
+import { currentPageAtom, initialStateAtom } from 'state/initialState'
 
 Modal.setAppElement('#app')
 
@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 key={router.asPath}
                 initializeState={({ set }) => {
                     set(initialStateAtom, pageProps)
+                    set(currentPageAtom, router.pathname)
                 }}
             >
                 <Component {...pageProps} />
