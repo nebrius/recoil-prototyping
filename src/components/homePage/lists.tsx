@@ -4,7 +4,6 @@ import { allListsAtom } from 'state/list'
 
 export function Lists() {
     const lists = useRecoilValue(allListsAtom)
-    console.log(lists)
     return (
         <div>
             {lists.map(list => (

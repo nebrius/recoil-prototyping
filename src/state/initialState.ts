@@ -9,3 +9,5 @@ export const initialStateAtom = atom<unknown>({
     // initial state in the Recoil root in _app.tsx (which in practice makes
     // this available before each render)
 })
+
+// TODO: create a selector on a per-page basis that not only casts the TypeScript type, but also does runtime checking to make sure we're on the right page

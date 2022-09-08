@@ -6,3 +6,7 @@ export type PostAddItemResponse = Item
 
 export type PostAddListRequest = Omit<List, 'id'>
 export type PostAddListResponse = List
+
+export interface GetHelpResponse {
+    helpMessage: string
+}
