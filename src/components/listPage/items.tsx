@@ -1,11 +1,11 @@
 import { useRecoilValue } from 'recoil'
+import { currentListAtom } from 'state/listPage/currentList'
 import {
     itemSelector,
     itemIdsInListSelector,
     useDeleteItem,
     useToggleItemCompleted,
-} from 'state/item'
-import { currentListAtom } from 'state/list'
+} from 'state/listPage/item'
 
 const Item = ({ id }: { id: number }) => {
     const item = useRecoilValue(itemSelector(id))

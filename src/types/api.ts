@@ -1,3 +1,5 @@
+// We put all API requests here, even though some requests only come from
+// specific pages, since the backend doesn't know about pages
 import { Item } from './item'
 import { List } from './list'
 

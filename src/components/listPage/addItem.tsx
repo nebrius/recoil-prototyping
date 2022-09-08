@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
 import { useRecoilValue } from 'recoil'
-import { useAddItem } from 'state/item'
-import { currentListAtom } from 'state/list'
+import { currentListAtom } from 'state/listPage/currentList'
+import { useAddItem } from 'state/listPage/item'
 
 const customStyles = {
     content: {

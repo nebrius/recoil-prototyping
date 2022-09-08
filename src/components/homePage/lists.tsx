@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRecoilValue } from 'recoil'
-import { allListsAtom } from 'state/list'
+import { allListsAtom } from 'state/homePage/list'
 
 export function Lists() {
     const lists = useRecoilValue(allListsAtom)

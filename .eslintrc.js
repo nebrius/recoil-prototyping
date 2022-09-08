@@ -80,6 +80,9 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error',
         'react-hooks/rules-of-hooks': 'error',
 
+        // Is currently broken, see https://github.com/vercel/next.js/pull/40331
+        'react/no-unknown-property': 'off',
+
         // TypeScript rules
         '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
         '@typescript-eslint/ban-ts-comment': 'error',

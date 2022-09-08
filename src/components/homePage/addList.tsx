@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
-import { useAddList } from 'state/list'
+import { useAddList } from 'state/homePage/list'
 
 const customStyles = {
     content: {

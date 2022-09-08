@@ -5,7 +5,8 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Modal from 'react-modal'
 import { RecoilRoot } from 'recoil'
-import { currentPageAtom, initialStateAtom } from 'state/initialState'
+import { currentPageAtom } from 'state/currentPage'
+import { initialStateAtom } from 'state/initialState'
 
 Modal.setAppElement('#app')
 
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 // route, so we set a key equal to the current path to force an
                 // unmount whenever the route changes. See
                 // https://nextjs.org/docs/api-reference/next/router#resetting-state-after-navigation
+                // TODO: is there a more elegant way to only reset atoms that are page-specific?
                 key={router.asPath}
                 initializeState={({ set }) => {
                     set(initialStateAtom, pageProps)

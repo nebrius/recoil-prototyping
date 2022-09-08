@@ -3,24 +3,13 @@ import { atom, selector, useRecoilState } from 'recoil'
 import { PostAddListRequest, PostAddListResponse } from 'types/api'
 import { post } from 'utils'
 
-import {
-    initialHomePageStateSelector,
-    initialListPageStateSelector,
-} from './initialState'
+import { initialHomePageStateSelector } from './initialState'
 
 export const allListsAtom = atom({
     key: 'allListsAtom',
     default: selector({
         key: 'allListsAtomInitializer',
         get: ({ get }) => get(initialHomePageStateSelector).lists,
-    }),
-})
-
-export const currentListAtom = atom({
-    key: 'currentListAtom',
-    default: selector({
-        key: 'currentListAtomInitializer',
-        get: ({ get }) => get(initialListPageStateSelector).list,
     }),
 })
 

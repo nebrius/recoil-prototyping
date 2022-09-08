@@ -4,7 +4,7 @@ import { SiteHeader } from 'components/siteHeader'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getCurrentUser, getLists } from 'server/db'
-import { HomePageInitialState } from 'types/hydration'
+import { HomePageInitialState } from 'types/homePage/hydration'
 
 function HomePage() {
     return (

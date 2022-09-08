@@ -5,7 +5,7 @@ import { SiteHeader } from 'components/siteHeader'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { getCurrentUser, getItemsForList, getList } from 'server/db'
-import { ListPageInitialState } from 'types/hydration'
+import { ListPageInitialState } from 'types/listPage/hydration'
 
 function TodoPage({ list }: ListPageInitialState) {
     return (
