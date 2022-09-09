@@ -19,7 +19,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                 // route, so we set a key equal to the current path to force an
                 // unmount whenever the route changes. See
                 // https://nextjs.org/docs/api-reference/next/router#resetting-state-after-navigation
-                // TODO: is there a more elegant way to only reset atoms that are page-specific?
+                // TODO: is there a more elegant way to only reset initial data
+                // atoms when the route changes? Perhaps hook into Next.js'
+                // router and set the initialStateAtom value when the route
+                // changes?
                 key={router.asPath}
                 initializeState={({ set }) => {
                     set(initialStateAtom, pageProps)

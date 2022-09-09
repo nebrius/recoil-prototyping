@@ -13,7 +13,10 @@ export const allListsAtom = atom({
     }),
 })
 
-// Hooks for working with state
+// Hooks for working with state. I thought up this pattern and found it a rather
+// nice way to easily make API calls without much overhead. I put these in this
+// file so that they can be reused throughout the site, and to consolidate state
+// management logic.
 
 export function useAddList() {
     const [allLists, setAllLists] = useRecoilState(allListsAtom)

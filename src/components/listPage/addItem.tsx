@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
 import { useRecoilValue } from 'recoil'
-import { currentListAtom } from 'state/listPage/currentList'
+import { currentListSelector } from 'state/listPage/currentList'
 import { useAddItem } from 'state/listPage/item'
 
 const customStyles = {
@@ -16,10 +16,9 @@ const customStyles = {
 }
 
 export function AddItem() {
-    const currentListId = useRecoilValue(currentListAtom).id
+    const currentListId = useRecoilValue(currentListSelector).id
     const [modalIsOpen, setIsOpen] = useState(false)
     const [name, setName] = useState('')
-    const addItem = useAddItem()
 
     function onOpen() {
         setIsOpen(true)
@@ -30,6 +29,9 @@ export function AddItem() {
         setName('')
     }
 
+    // Use the useAddItem hook to make an API call that creates a new item. This
+    // happens after the use clicks "Create" in the modal
+    const addItem = useAddItem()
     function onCreate() {
         console.log(`Creating item named ${name}`)
         addItem({ name, listId: currentListId, completed: false })

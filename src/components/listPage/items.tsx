@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { currentListAtom } from 'state/listPage/currentList'
+import { currentListSelector } from 'state/listPage/currentList'
 import {
     itemSelector,
     itemIdsInListSelector,
@@ -10,12 +10,15 @@ import {
 const Item = ({ id }: { id: number }) => {
     const item = useRecoilValue(itemSelector(id))
 
+    // Use the useDeleteItem hook from state to make an API call to delete the item
     const deleteItem = useDeleteItem()
     function onDelete() {
         console.log(`Deleting item ${id}`)
         void deleteItem(item)
     }
 
+    // Use the useToggleItemCompleted hook from state to make an API call to
+    // toggle the item's completion state
     const toggleItemCompleted = useToggleItemCompleted()
     function onChecked() {
         console.log(`Toggling item ${id} completed`)
@@ -49,7 +52,7 @@ const Item = ({ id }: { id: number }) => {
 }
 
 export function Items() {
-    const currentListId = useRecoilValue(currentListAtom).id
+    const currentListId = useRecoilValue(currentListSelector).id
     const itemIds = useRecoilValue(itemIdsInListSelector(currentListId))
     return (
         <div>

@@ -4,6 +4,8 @@ import { ItemFilter } from 'types/item'
 
 const OPTIONS: ItemFilter[] = ['all', 'completed', 'uncompleted']
 
+// This component allows us to view all items, only items that have been
+// completed, or only items that have not been completed
 export function Filter() {
     const [filter, setFilter] = useRecoilState(filterAtom)
     return (

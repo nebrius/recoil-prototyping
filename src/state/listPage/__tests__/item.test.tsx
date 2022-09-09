@@ -51,9 +51,11 @@ function ListPageRoot({ children }: { children?: React.ReactNode }) {
 
 describe('Item state', () => {
     it('Can filter items', async () => {
+        // We set up two Recoil observers to monitor how our atoms/selectors
+        // change over time. This allows us to make sure that the filter value
+        // is taken into account when determining which list items to show
         const onFilterChange = jest.fn()
         const onListChange = jest.fn()
-
         render(
             <ListPageRoot>
                 <RecoilObserver atom={filterAtom} onChange={onFilterChange} />
@@ -64,11 +66,14 @@ describe('Item state', () => {
                 <ListPage list={LIST} items={ITEMS} currentUser={TEST_USER} />
             </ListPageRoot>,
         )
+
+        // Start by checking the default value, 'all'
         expect(onFilterChange).toHaveBeenCalledTimes(1)
         expect(onFilterChange).toHaveBeenCalledWith('all')
         expect(onListChange).toHaveBeenCalledTimes(1)
         expect(onListChange).toHaveBeenCalledWith(ITEMS.map(i => i.id))
 
+        // Now check that we filter out uncompleted items when we select to only show completed items
         await userEvent.selectOptions(screen.getByRole('combobox'), 'completed')
         expect(onFilterChange).toHaveBeenCalledTimes(2)
         expect(onFilterChange).toHaveBeenCalledWith('completed')
@@ -77,6 +82,7 @@ describe('Item state', () => {
             ITEMS.filter(i => i.completed).map(i => i.id),
         )
 
+        // Now check that we filter out completed items when we select to only show uncompleted items
         await userEvent.selectOptions(
             screen.getByRole('combobox'),
             'uncompleted',

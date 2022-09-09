@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+// This file basically implements a quick-n-dirty backend using sqlite
+
 import { Database, open } from 'sqlite'
 import sqlite3 from 'sqlite3'
 

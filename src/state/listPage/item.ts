@@ -21,17 +21,20 @@ const allItemsAtom = atom({
 })
 
 // Note: normally we'd just have the backend only return items associated with a
-// list, but that would render this selector unecessary, so we send them all so
-// we can have a nice example of a selector
+// list, but that would make this selector a little too simple, so we
+// inneficiently send all items so so this selector has more to do
 export const itemIdsInListSelector = selectorFamily<number[], number>({
     key: 'items-in-list',
     get:
         listId =>
         ({ get }) => {
-            const currentItems = get(allItemsAtom)
+            const allItems = get(allItemsAtom)
             const filter = get(filterAtom)
             const items: number[] = []
-            for (const item of currentItems) {
+
+            // Filter out items that are either not a part of this list or
+            // should not be visible based on the current view filter
+            for (const item of allItems) {
                 if (item.listId === listId) {
                     switch (filter) {
                         case 'all': {
@@ -57,6 +60,7 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
         },
 })
 
+// Given an item ID, this returns the entire item
 export const itemSelector = selectorFamily<Item, number>({
     key: 'item',
     get:
@@ -71,7 +75,10 @@ export const itemSelector = selectorFamily<Item, number>({
         },
 })
 
-// Hooks for working with state
+// Hooks for working with state. I thought up this pattern and found it a rather
+// nice way to easily make API calls without much overhead. I put these in this
+// file so that they can be reused throughout the site, and to consolidate state
+// management logic.
 
 export function useAddItem() {
     const [allItems, setAllItems] = useRecoilState(allItemsAtom)

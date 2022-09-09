@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
-import { currentListAtom } from 'state/listPage/currentList'
+import { currentListSelector } from 'state/listPage/currentList'
 
 export function Metadata() {
-    const { name } = useRecoilValue(currentListAtom)
+    const { name } = useRecoilValue(currentListSelector)
     return <h1>{name}</h1>
 }

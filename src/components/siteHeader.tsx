@@ -16,6 +16,11 @@ const customStyles = {
     },
 }
 
+// This component shows the site header. It pulls in the current user's name and
+// displays it, and also has a "help" button for demonstrating dynamic loading
+// of data. Once the help modal is opened, we then use a Loadable to set the
+// help text. Once it's been loaded once from the server, it's never loaded
+// again. See https://recoiljs.org/docs/api-reference/core/Loadable/
 export function SiteHeader() {
     const currentUser = useRecoilValue(currentUserAtom)
     const [helpText, setHelpText] = useRecoilStateLoadable(helpTextAtom)
