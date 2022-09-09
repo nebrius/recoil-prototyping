@@ -26,7 +26,7 @@ function expectAtomToBeLoading<T>(atom: RecoilValue<T>) {
     expect(result.current.state).toEqual('loading')
 }
 
-describe('Home', () => {
+describe('Site Header', () => {
     beforeEach(() => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
         ;(global as any).fetch = jest.fn(() =>
