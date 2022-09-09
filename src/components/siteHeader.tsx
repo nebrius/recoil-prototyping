@@ -21,14 +21,11 @@ export function SiteHeader() {
     const [helpText, setHelpText] = useRecoilStateLoadable(helpTextAtom)
     const [modalIsOpen, setIsOpen] = useState(false)
 
-    function onOpen() {
+    async function onOpen() {
         setIsOpen(true)
         if (helpText.state !== 'hasValue') {
-            get<GetHelpResponse>('/help')
-                .then(({ helpMessage }) => {
-                    setHelpText(helpMessage)
-                })
-                .catch(() => console.error('Could not load help text'))
+            const { helpMessage } = await get<GetHelpResponse>('/help')
+            setHelpText(helpMessage)
         }
     }
 
@@ -44,6 +41,7 @@ export function SiteHeader() {
                 </Link>
             </div>
             <label>{currentUser.name}</label>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <button onClick={onOpen}>help</button>
             <Modal
                 isOpen={modalIsOpen}
