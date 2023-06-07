@@ -19,6 +19,9 @@
     "plugins": [
       {
         "name": "typescript-styled-plugin"
+      },
+      {
+        "name": "next"
       }
     ],
     "types": [
@@ -41,7 +44,8 @@
     "moduleResolution": "node"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
