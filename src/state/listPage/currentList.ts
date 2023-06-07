@@ -1,6 +1,6 @@
-import { selector } from 'recoil'
+import { selector } from 'recoil';
 
-import { initialListPageStateSelector } from './initialState'
+import { initialListPageStateSelector } from './initialState';
 
 // This atom contains metadata about the current list displayed on the list
 // page. Since this list will never change while on this page, we can safely use
@@ -8,6 +8,6 @@ import { initialListPageStateSelector } from './initialState'
 // this in a selector though to prevent initial state data from leaking into the
 // broader app.
 export const currentListSelector = selector({
-    key: 'currentListSelector',
-    get: ({ get }) => get(initialListPageStateSelector).list,
-})
+  key: 'currentListSelector',
+  get: ({ get }) => get(initialListPageStateSelector).list,
+});

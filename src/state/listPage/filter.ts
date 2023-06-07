@@ -1,7 +1,7 @@
-import { atom } from 'recoil'
-import { ItemFilter } from 'types/item'
+import { atom } from 'recoil';
+import { ItemFilter } from 'types/item';
 
 export const filterAtom = atom<ItemFilter>({
-    key: 'filterAtom',
-    default: 'all',
-})
+  key: 'filterAtom',
+  default: 'all',
+});

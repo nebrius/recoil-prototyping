@@ -1,5 +1,5 @@
-import { atom, selector } from 'recoil'
-import { CommonInitialState } from 'types/hydration'
+import { atom, selector } from 'recoil';
+import { CommonInitialState } from 'types/hydration';
 
 // We take the data returned from Next.js' `getServerSideProps` and stick it
 // into the initialStateAtom atom. We use this atom to initialize other atoms,
@@ -16,18 +16,18 @@ import { CommonInitialState } from 'types/hydration'
 // should not be used anywhere else
 // TODO: create a lint rule forbidding access to this atom outside _app.tsx and hydration atoms
 export const initialStateAtom = atom<unknown>({
-    key: 'initialStateAtom',
-    // No default is set here intentionally. Not setting the default causes this
-    // atom to be set in a "loading" state, enabling React's Suspense that
-    // delays rendering of any component dependent on it. We then set this
-    // initial state in the Recoil root in _app.tsx (which in practice makes
-    // this available before any renders)
-})
+  key: 'initialStateAtom',
+  // No default is set here intentionally. Not setting the default causes this
+  // atom to be set in a "loading" state, enabling React's Suspense that
+  // delays rendering of any component dependent on it. We then set this
+  // initial state in the Recoil root in _app.tsx (which in practice makes
+  // this available before any renders)
+});
 
 // The common state selector exposes properties available on all pages, making
 // it possible to skip error checking for other atoms that don't care about page
 // specific data
 export const initialCommonStateSelector = selector({
-    key: 'initialCommonStateSelector',
-    get: ({ get }) => get(initialStateAtom) as CommonInitialState,
-})
+  key: 'initialCommonStateSelector',
+  get: ({ get }) => get(initialStateAtom) as CommonInitialState,
+});

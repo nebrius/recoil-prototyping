@@ -1,7 +1,7 @@
-import { useRecoilValue } from 'recoil'
-import { currentListSelector } from 'state/listPage/currentList'
+import { useRecoilValue } from 'recoil';
+import { currentListSelector } from 'state/listPage/currentList';
 
 export function Metadata() {
-    const { name } = useRecoilValue(currentListSelector)
-    return <h1>{name}</h1>
+  const { name } = useRecoilValue(currentListSelector);
+  return <h1>{name}</h1>;
 }

@@ -24,7 +24,7 @@
     "types": [
       "node",
       "jest",
-      "@testing-library/jest-dom",
+      "@testing-library/jest-dom"
     ],
     "rootDir": "./src",
     "sourceMap": true,
@@ -37,7 +37,8 @@
     "noEmit": true,
     "incremental": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"
