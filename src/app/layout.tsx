@@ -1,12 +1,14 @@
-export default function SettingsLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div>App layout</div>
-      <div>{children}</div>
-    </>
+    <html lang="en">
+      <body>
+        <div>App Layout</div>
+        <div>{children}</div>
+      </body>
+    </html>
   );
 }
