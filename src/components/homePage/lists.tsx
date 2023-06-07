@@ -6,7 +6,7 @@ export function Lists() {
   const lists = useRecoilValue(allListsAtom);
   return (
     <div>
-      {lists.map(list => (
+      {lists.map((list) => (
         <li className="item" key={list.id}>
           <Link href={`list/${list.id}`}>
             <a>{list.name}</a>

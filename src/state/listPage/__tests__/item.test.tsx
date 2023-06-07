@@ -71,7 +71,7 @@ describe('Item state', () => {
     expect(onFilterChange).toHaveBeenCalledTimes(1);
     expect(onFilterChange).toHaveBeenCalledWith('all');
     expect(onListChange).toHaveBeenCalledTimes(1);
-    expect(onListChange).toHaveBeenCalledWith(ITEMS.map(i => i.id));
+    expect(onListChange).toHaveBeenCalledWith(ITEMS.map((i) => i.id));
 
     // Now check that we filter out uncompleted items when we select to only show completed items
     await userEvent.selectOptions(screen.getByRole('combobox'), 'completed');
@@ -79,7 +79,7 @@ describe('Item state', () => {
     expect(onFilterChange).toHaveBeenCalledWith('completed');
     expect(onListChange).toHaveBeenCalledTimes(2);
     expect(onListChange).toHaveBeenCalledWith(
-      ITEMS.filter(i => i.completed).map(i => i.id),
+      ITEMS.filter((i) => i.completed).map((i) => i.id),
     );
 
     // Now check that we filter out completed items when we select to only show uncompleted items
@@ -88,7 +88,7 @@ describe('Item state', () => {
     expect(onFilterChange).toHaveBeenCalledWith('completed');
     expect(onListChange).toHaveBeenCalledTimes(3);
     expect(onListChange).toHaveBeenCalledWith(
-      ITEMS.filter(i => !i.completed).map(i => i.id),
+      ITEMS.filter((i) => !i.completed).map((i) => i.id),
     );
   });
 });

@@ -35,7 +35,7 @@ export default TodoPage;
 
 export const getServerSideProps: GetServerSideProps<
   ListPageInitialState
-> = async context => {
+> = async (context) => {
   const list = await getList(parseInt(context.query.id as string, 10));
   if (!list) {
     return {

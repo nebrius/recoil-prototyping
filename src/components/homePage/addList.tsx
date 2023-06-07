@@ -31,7 +31,7 @@ export function AddList() {
     console.log(`Creating list named ${name}`);
     addList({ name })
       .then(() => setIsOpen(false))
-      .catch(err => {
+      .catch((err) => {
         throw err;
       });
   }
@@ -58,7 +58,7 @@ export function AddList() {
             className="name"
             type="text"
             value={name}
-            onChange={e => setName(e.currentTarget.value)}
+            onChange={(e) => setName(e.currentTarget.value)}
           />
           <style jsx>{`
             .name {

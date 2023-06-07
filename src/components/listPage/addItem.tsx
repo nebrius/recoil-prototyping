@@ -36,7 +36,7 @@ export function AddItem() {
     console.log(`Creating item named ${name}`);
     addItem({ name, listId: currentListId, completed: false })
       .then(() => setIsOpen(false))
-      .catch(err => {
+      .catch((err) => {
         throw err;
       });
   }
@@ -63,7 +63,7 @@ export function AddItem() {
             className="name"
             type="text"
             value={name}
-            onChange={e => setName(e.currentTarget.value)}
+            onChange={(e) => setName(e.currentTarget.value)}
           />
           <style jsx>{`
             .name {

@@ -4,6 +4,11 @@ export const metadata: Metadata = {
   title: 'Settings',
 };
 
-export default function Page() {
-  return <div>Settings page</div>;
+export default function Layout(props: { children: React.ReactNode }) {
+  return (
+    <>
+      <div>Settings page</div>
+      {props.children}
+    </>
+  );
 }

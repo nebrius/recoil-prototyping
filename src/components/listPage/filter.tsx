@@ -13,9 +13,9 @@ export function Filter() {
       <label>Viewing: </label>
       <select
         value={filter}
-        onChange={e => setFilter(e.currentTarget.value as ItemFilter)}
+        onChange={(e) => setFilter(e.currentTarget.value as ItemFilter)}
       >
-        {OPTIONS.map(f => (
+        {OPTIONS.map((f) => (
           <option key={f} value={f}>
             {f}
           </option>

@@ -52,7 +52,7 @@ export function Items() {
   const itemIds = useRecoilValue(itemIdsInListSelector(currentListId));
   return (
     <div>
-      {itemIds.map(id => (
+      {itemIds.map((id) => (
         <Item key={id} id={id} />
       ))}
     </div>

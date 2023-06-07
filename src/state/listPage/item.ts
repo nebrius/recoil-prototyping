@@ -26,7 +26,7 @@ const allItemsAtom = atom({
 export const itemIdsInListSelector = selectorFamily<number[], number>({
   key: 'items-in-list',
   get:
-    listId =>
+    (listId) =>
     ({ get }) => {
       const allItems = get(allItemsAtom);
       const filter = get(filterAtom);
@@ -64,10 +64,10 @@ export const itemIdsInListSelector = selectorFamily<number[], number>({
 export const itemSelector = selectorFamily<Item, number>({
   key: 'item',
   get:
-    id =>
+    (id) =>
     ({ get }) => {
       const items = get(allItemsAtom);
-      const item = items.find(i => i.id === id);
+      const item = items.find((i) => i.id === id);
       if (!item) {
         throw new Error(`Could not find item with id ${id}`);
       }
@@ -99,7 +99,7 @@ export function useDeleteItem() {
   return useCallback(
     async (item: Item) => {
       await del(`/api/item/${item.id}`);
-      setAllItems(allItems.filter(i => i.id !== item.id));
+      setAllItems(allItems.filter((i) => i.id !== item.id));
     },
     [allItems, setAllItems],
   );
@@ -115,7 +115,7 @@ export function useToggleItemCompleted() {
       };
       await put(`/api/item/${item.id}`, updateItem);
       setAllItems(
-        allItems.map(i => {
+        allItems.map((i) => {
           if (i.id !== item.id) {
             return i;
           }

@@ -66,7 +66,7 @@ export async function getItemsForList(listId: number) {
         ':id': listId,
       },
     )
-  ).map(item => ({
+  ).map((item) => ({
     id: item.id,
     listId: item.list_id,
     name: item.name,
