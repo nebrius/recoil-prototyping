@@ -21,7 +21,9 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "rootDir": ".",
+    "baseUrl": "."
   },
   "include": [
     "next-env.d.ts",

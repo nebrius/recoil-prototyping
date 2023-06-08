@@ -1,3 +1,5 @@
+import { delay } from 'package/utils/delay';
+
 import styles from './app.module.css';
 
 export default async function RootLayout({
@@ -5,7 +7,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await delay(1000);
   return (
     <html lang="en" className={styles.html}>
       <body className={styles.app}>
