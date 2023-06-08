@@ -1,5 +1,3 @@
-import styles from './style.module.css';
-
 export default function Layout(props: {
   children: React.ReactNode;
   account: React.ReactNode;
@@ -8,9 +6,15 @@ export default function Layout(props: {
   return (
     <>
       {props.children}
-      <div className={styles.settingsLayout}>
-        {props.account}
-        {props.profile}
+      <div>
+        <div>
+          <h4>Account</h4>
+          {props.account}
+        </div>
+        <div>
+          <h4>Profile</h4>
+          {props.profile}
+        </div>
       </div>
     </>
   );
