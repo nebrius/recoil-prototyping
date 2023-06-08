@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
-import { CommonInitialState } from 'types/hydration';
+
+import { CommonInitialState } from '../types/commonInitialState';
 
 // We take the data returned from Next.js' `getServerSideProps` and stick it
 // into the initialStateAtom atom. We use this atom to initialize other atoms,
