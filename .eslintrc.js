@@ -134,8 +134,6 @@ module.exports = {
         '@typescript-eslint/unified-signatures': 'error',
 
         // Custom rules found in the eslint-local-rules directory
-        // TODO: Enable this rule after Icons are set up to handle pixel size values.
-        // 'local-rules/icon-sizes': 'error',
 
         // Not needed in Next.js
         'react/react-in-jsx-scope': 'off',
