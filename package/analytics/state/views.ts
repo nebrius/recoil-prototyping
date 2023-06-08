@@ -1,20 +1,14 @@
-import { atom, selector, useRecoilValue } from 'recoil';
+import {
+  createInitialStateAtom,
+  createUseInitialStateValueHook,
+} from 'package/state/initalStateHelpers';
 
 import { initialStateAtom } from './initialState';
 
-const analyticsViewsAtom = atom({
+const analyticsViewsAtom = createInitialStateAtom(initialStateAtom, {
   key: 'analytics:analyticsViewsAtom',
-
-  // We set the default to a selector so that we can grab the initial value
-  // from the initial value atom, which is set during first render in the
-  // Recoil root in AppRoot
-  default: selector({
-    key: 'analytics:analyticsViewsAtomInitializer',
-    get: ({ get }) => get(initialStateAtom).views,
-  }),
+  initialValue: (initialState) => initialState.views,
 });
 
-export function useAnalyticsViews() {
-  // TODO: add error checking
-  return useRecoilValue(analyticsViewsAtom);
-}
+export const useAnalyticsViews =
+  createUseInitialStateValueHook(analyticsViewsAtom);
