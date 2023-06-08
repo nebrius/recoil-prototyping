@@ -18,9 +18,7 @@ export function AppRoot({
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot
-      initializeState={({ set }) => {
-        set(initialStateAtom, initialState);
-      }}
+      initializeState={({ set }) => set(initialStateAtom, initialState)}
     >
       <AppHeader />
       <div className={styles.appContent}>{children}</div>

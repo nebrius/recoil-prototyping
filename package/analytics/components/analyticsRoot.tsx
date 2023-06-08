@@ -1,5 +1,9 @@
 'use client';
 
+import { RecoilRoot } from 'recoil';
+
+import { Views } from './views';
+import { initialStateAtom } from '../state/initialState';
 import { InitialState } from '../types/initialState';
 
 interface AnalyticsRootProps {
@@ -7,7 +11,11 @@ interface AnalyticsRootProps {
 }
 
 export function AnalyticsRoot({ initialState }: AnalyticsRootProps) {
-  // TODO: set up Recoil
-  console.log(initialState);
-  return <div>Analytics content</div>;
+  return (
+    <RecoilRoot
+      initializeState={({ set }) => set(initialStateAtom, initialState)}
+    >
+      <Views />
+    </RecoilRoot>
+  );
 }

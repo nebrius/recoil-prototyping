@@ -1,1 +1,3 @@
-export type ProfileInitialState = Record<string, never>;
+export interface ProfileInitialState {
+  description: string;
+}

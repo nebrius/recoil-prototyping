@@ -1,1 +1,3 @@
-export type AccountInitialState = Record<string, never>;
+export interface AccountInitialState {
+  type: 'standard' | 'pro';
+}

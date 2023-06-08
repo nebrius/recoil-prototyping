@@ -1,5 +1,9 @@
 'use client';
 
+import { RecoilRoot } from 'recoil';
+
+import { ProfileDescription } from './profileDescription';
+import { profileInitialStateAtom } from '../state/profileInitialState';
 import { ProfileInitialState } from '../types/profileInitialState';
 
 interface ProfileRootProps {
@@ -7,7 +11,11 @@ interface ProfileRootProps {
 }
 
 export function ProfileRoot({ initialState }: ProfileRootProps) {
-  // TODO: set up Recoil
-  console.log(initialState);
-  return <div>Profile settings content</div>;
+  return (
+    <RecoilRoot
+      initializeState={({ set }) => set(profileInitialStateAtom, initialState)}
+    >
+      <ProfileDescription />
+    </RecoilRoot>
+  );
 }

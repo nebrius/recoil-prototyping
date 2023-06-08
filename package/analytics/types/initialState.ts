@@ -1,1 +1,3 @@
-export type InitialState = Record<string, never>;
+export interface InitialState {
+  views: number;
+}
