@@ -1,10 +1,11 @@
 import styles from './app.module.css';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return (
     <html lang="en" className={styles.html}>
       <body className={styles.app}>
