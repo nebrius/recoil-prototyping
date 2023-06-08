@@ -1,5 +1,4 @@
 import { AppRoot } from 'package/common/components/appRoot';
-import { AppHeader } from 'package/common/components/header';
 import { CommonInitialState } from 'package/common/types/commonInitialState';
 import { delay } from 'package/utils/delay';
 
@@ -24,12 +23,8 @@ export default async function RootLayout({
   const initialState = await getInitialState();
   return (
     <html lang="en" className={styles.html}>
-      <body className={styles.app}>
-        <AppRoot initialState={initialState}>
-          <AppHeader />
-          <div className={styles.appContent}>{children}</div>
-          <footer className={styles.appFooter}>Footer content</footer>
-        </AppRoot>
+      <body className={styles.body}>
+        <AppRoot initialState={initialState}>{children}</AppRoot>
       </body>
     </html>
   );
