@@ -1,0 +1,12 @@
+.appHeader {
+  background-color: purple;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.appHeader>h2 {
+  flex-grow: 1;
+}

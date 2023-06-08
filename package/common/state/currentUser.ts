@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, useRecoilValue } from 'recoil';
 
 import { initialCommonStateSelector } from './initialState';
 
@@ -13,3 +13,7 @@ export const currentUserAtom = atom({
     get: ({ get }) => get(initialCommonStateSelector).currentUser,
   }),
 });
+
+export function useCurrentUser() {
+  return useRecoilValue(currentUserAtom);
+}
