@@ -1,22 +1,22 @@
 'use client';
 
-import { LocalizedState } from 'packages/state/components/localizedState';
+import { LayoutStateRoot } from 'packages/state/components/layoutStateRoot';
 
 import { ProfileDescription } from './profileDescription';
 import { profileInitialStateAtom } from '../state/profileInitialState';
 import { ProfileInitialState } from '../types/profileInitialState';
 
-interface ProfileRootProps {
+interface ProfileLayoutRootProps {
   initialState: ProfileInitialState;
 }
 
-export function ProfileRoot({ initialState }: ProfileRootProps) {
+export function ProfileLayoutRoot({ initialState }: ProfileLayoutRootProps) {
   return (
-    <LocalizedState
+    <LayoutStateRoot
       initialState={initialState}
       initialStateAtom={profileInitialStateAtom}
     >
       <ProfileDescription />
-    </LocalizedState>
+    </LayoutStateRoot>
   );
 }

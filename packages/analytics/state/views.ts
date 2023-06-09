@@ -1,11 +1,11 @@
 import {
-  createInitialStateAtom,
+  initialStateBasedAtom,
   createUseInitialStateValueHook,
 } from 'packages/state/initalStateHelpers';
 
 import { initialStateAtom } from './initialState';
 
-const analyticsViewsAtom = createInitialStateAtom(initialStateAtom, {
+const analyticsViewsAtom = initialStateBasedAtom(initialStateAtom, {
   key: 'analytics:analyticsViewsAtom',
   initialValue: (initialState) => initialState.views,
 });

@@ -22,7 +22,7 @@ type InitialStateAtomOptions<AtomValue, InitialState> = Omit<
     | AtomValue;
 };
 
-export function createInitialStateAtom<AtomValue, InitialState>(
+export function initialStateBasedAtom<AtomValue, InitialState>(
   initialStateAtom: RecoilValue<InitialState>,
   {
     initialValue,

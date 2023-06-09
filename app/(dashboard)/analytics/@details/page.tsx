@@ -1,4 +1,4 @@
-import { AnalyticsRoot } from 'packages/analytics/components/analyticsRoot';
+import { DetailsLayoutRoot } from 'packages/analytics/components/detailsLayoutRoot';
 import { InitialState } from 'packages/analytics/types/initialState';
 import { delay } from 'packages/utils/delay';
 
@@ -12,5 +12,5 @@ async function getInitialState() {
 
 export default async function Page() {
   const initialState = await getInitialState();
-  return <AnalyticsRoot initialState={initialState} />;
+  return <DetailsLayoutRoot initialState={initialState} />;
 }

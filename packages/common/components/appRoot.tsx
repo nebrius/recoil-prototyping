@@ -1,6 +1,6 @@
 'use client';
 
-import { LocalizedState } from 'packages/state/components/localizedState';
+import { LayoutStateRoot } from 'packages/state/components/layoutStateRoot';
 import { PropsWithChildren } from 'react';
 import { RecoilRoot } from 'recoil';
 
@@ -19,14 +19,14 @@ export function AppRoot({
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot>
-      <LocalizedState
+      <LayoutStateRoot
         initialState={initialState}
         initialStateAtom={initialStateAtom}
       >
         <AppHeader />
         <div className={styles.appContent}>{children}</div>
         <footer className={styles.appFooter}>Footer content</footer>
-      </LocalizedState>
+      </LayoutStateRoot>
     </RecoilRoot>
   );
 }

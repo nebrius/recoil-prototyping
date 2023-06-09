@@ -1,22 +1,22 @@
 'use client';
 
-import { LocalizedState } from 'packages/state/components/localizedState';
+import { LayoutStateRoot } from 'packages/state/components/layoutStateRoot';
 
 import { Views } from './views';
 import { initialStateAtom } from '../state/initialState';
 import { InitialState } from '../types/initialState';
 
-interface AnalyticsRootProps {
+interface DetailsLayoutRootProps {
   initialState: InitialState;
 }
 
-export function AnalyticsRoot({ initialState }: AnalyticsRootProps) {
+export function DetailsLayoutRoot({ initialState }: DetailsLayoutRootProps) {
   return (
-    <LocalizedState
+    <LayoutStateRoot
       initialState={initialState}
       initialStateAtom={initialStateAtom}
     >
       <Views />
-    </LocalizedState>
+    </LayoutStateRoot>
   );
 }

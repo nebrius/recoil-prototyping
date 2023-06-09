@@ -1,22 +1,22 @@
 'use client';
 
-import { LocalizedState } from 'packages/state/components/localizedState';
+import { LayoutStateRoot } from 'packages/state/components/layoutStateRoot';
 
 import { AccountType } from './accountType';
 import { accountInitialStateAtom } from '../state/accountInitialState';
 import { AccountInitialState } from '../types/accountInitialState';
 
-interface AccountRootProps {
+interface AccountLayoutRootProps {
   initialState: AccountInitialState;
 }
 
-export function AccountRoot({ initialState }: AccountRootProps) {
+export function AccountLayoutRoot({ initialState }: AccountLayoutRootProps) {
   return (
-    <LocalizedState
+    <LayoutStateRoot
       initialState={initialState}
       initialStateAtom={accountInitialStateAtom}
     >
       <AccountType />
-    </LocalizedState>
+    </LayoutStateRoot>
   );
 }

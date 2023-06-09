@@ -6,7 +6,7 @@ interface LocalizedStateProps<InitialState> {
   initialStateAtom: RecoilState<InitialState>;
 }
 
-export function LocalizedState<InitialState>({
+export function LayoutStateRoot<InitialState>({
   children,
   initialState,
   initialStateAtom,

@@ -1,4 +1,4 @@
-import { ProfileRoot } from 'packages/settings/components/profileRoot';
+import { ProfileLayoutRoot } from 'packages/settings/components/profileLayoutRoot';
 import { ProfileInitialState } from 'packages/settings/types/profileInitialState';
 import { delay } from 'packages/utils/delay';
 
@@ -12,5 +12,5 @@ async function getInitialState() {
 
 export default async function Page() {
   const initialState = await getInitialState();
-  return <ProfileRoot initialState={initialState} />;
+  return <ProfileLayoutRoot initialState={initialState} />;
 }
