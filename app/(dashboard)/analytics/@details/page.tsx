@@ -1,5 +1,5 @@
-import { DetailsLayoutRoot } from 'packages/analytics/components/detailsLayoutRoot';
-import { InitialState } from 'packages/analytics/types/initialState';
+import { DetailsLayoutRoot } from 'packages/analyticsLayout/components/detailsLayoutRoot';
+import { InitialState } from 'packages/analyticsLayout/types/initialState';
 import { delay } from 'packages/utils/delay';
 
 async function getInitialState() {

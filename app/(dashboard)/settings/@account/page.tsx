@@ -1,5 +1,5 @@
-import { AccountLayoutRoot } from 'packages/settings/components/accountLayoutRoot';
-import { AccountInitialState } from 'packages/settings/types/accountInitialState';
+import { AccountLayoutRoot } from 'packages/settingsAccountLayout/components/accountLayoutRoot';
+import { AccountInitialState } from 'packages/settingsAccountLayout/types/accountInitialState';
 import { delay } from 'packages/utils/delay';
 
 async function getInitialState() {

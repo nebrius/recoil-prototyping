@@ -1,5 +1,5 @@
-import { ProfileLayoutRoot } from 'packages/settings/components/profileLayoutRoot';
-import { ProfileInitialState } from 'packages/settings/types/profileInitialState';
+import { ProfileLayoutRoot } from 'packages/settingsProfileLayout/components/profileLayoutRoot';
+import { ProfileInitialState } from 'packages/settingsProfileLayout/types/profileInitialState';
 import { delay } from 'packages/utils/delay';
 
 async function getInitialState() {
