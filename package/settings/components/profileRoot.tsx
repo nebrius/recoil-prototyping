@@ -1,6 +1,6 @@
 'use client';
 
-import { RecoilRoot } from 'recoil';
+import { LocalizedState } from 'package/state/components/localizedState';
 
 import { ProfileDescription } from './profileDescription';
 import { profileInitialStateAtom } from '../state/profileInitialState';
@@ -12,10 +12,11 @@ interface ProfileRootProps {
 
 export function ProfileRoot({ initialState }: ProfileRootProps) {
   return (
-    <RecoilRoot
-      initializeState={({ set }) => set(profileInitialStateAtom, initialState)}
+    <LocalizedState
+      initialState={initialState}
+      initialStateAtom={profileInitialStateAtom}
     >
       <ProfileDescription />
-    </RecoilRoot>
+    </LocalizedState>
   );
 }

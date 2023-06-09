@@ -1,6 +1,6 @@
 'use client';
 
-import { RecoilRoot } from 'recoil';
+import { LocalizedState } from 'package/state/components/localizedState';
 
 import { Views } from './views';
 import { initialStateAtom } from '../state/initialState';
@@ -12,10 +12,11 @@ interface AnalyticsRootProps {
 
 export function AnalyticsRoot({ initialState }: AnalyticsRootProps) {
   return (
-    <RecoilRoot
-      initializeState={({ set }) => set(initialStateAtom, initialState)}
+    <LocalizedState
+      initialState={initialState}
+      initialStateAtom={initialStateAtom}
     >
       <Views />
-    </RecoilRoot>
+    </LocalizedState>
   );
 }

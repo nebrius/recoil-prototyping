@@ -1,6 +1,6 @@
 'use client';
 
-import { RecoilRoot } from 'recoil';
+import { LocalizedState } from 'package/state/components/localizedState';
 
 import { AccountType } from './accountType';
 import { accountInitialStateAtom } from '../state/accountInitialState';
@@ -12,10 +12,11 @@ interface AccountRootProps {
 
 export function AccountRoot({ initialState }: AccountRootProps) {
   return (
-    <RecoilRoot
-      initializeState={({ set }) => set(accountInitialStateAtom, initialState)}
+    <LocalizedState
+      initialState={initialState}
+      initialStateAtom={accountInitialStateAtom}
     >
       <AccountType />
-    </RecoilRoot>
+    </LocalizedState>
   );
 }
