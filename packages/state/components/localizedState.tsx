@@ -1,4 +1,4 @@
-import { PropsWithChildren, useRef } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { RecoilState, useRecoilStateLoadable } from 'recoil';
 
 interface LocalizedStateProps<InitialState> {
@@ -13,11 +13,10 @@ export function LocalizedState<InitialState>({
 }: PropsWithChildren<LocalizedStateProps<InitialState>>) {
   const [initialStateLoadable, setInitialState] =
     useRecoilStateLoadable(initialStateAtom);
-  const isInitializedRef = useRef(false);
-  if (!isInitializedRef.current) {
-    isInitializedRef.current = true;
-    setInitialState(initialState);
-  }
+  useEffect(
+    () => setInitialState(initialState),
+    [initialState, setInitialState],
+  );
   switch (initialStateLoadable.state) {
     case 'loading': {
       return null;
