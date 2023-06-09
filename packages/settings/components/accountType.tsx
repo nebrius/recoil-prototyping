@@ -1,4 +1,4 @@
-import { useCurrentUser } from 'package/common/state/currentUser';
+import { useCurrentUser } from 'packages/common/state/currentUser';
 
 import { useAccountType } from '../state/accountType';
 

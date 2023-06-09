@@ -1,6 +1,6 @@
-import { AccountRoot } from 'package/settings/components/accountRoot';
-import { AccountInitialState } from 'package/settings/types/accountInitialState';
-import { delay } from 'package/utils/delay';
+import { AccountRoot } from 'packages/settings/components/accountRoot';
+import { AccountInitialState } from 'packages/settings/types/accountInitialState';
+import { delay } from 'packages/utils/delay';
 
 async function getInitialState() {
   await delay(2000);

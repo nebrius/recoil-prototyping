@@ -1,6 +1,6 @@
-import { AnalyticsRoot } from 'package/analytics/components/analyticsRoot';
-import { InitialState } from 'package/analytics/types/initialState';
-import { delay } from 'package/utils/delay';
+import { AnalyticsRoot } from 'packages/analytics/components/analyticsRoot';
+import { InitialState } from 'packages/analytics/types/initialState';
+import { delay } from 'packages/utils/delay';
 
 async function getInitialState() {
   await delay(4000);

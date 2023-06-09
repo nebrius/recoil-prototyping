@@ -1,6 +1,6 @@
-import { ProfileRoot } from 'package/settings/components/profileRoot';
-import { ProfileInitialState } from 'package/settings/types/profileInitialState';
-import { delay } from 'package/utils/delay';
+import { ProfileRoot } from 'packages/settings/components/profileRoot';
+import { ProfileInitialState } from 'packages/settings/types/profileInitialState';
+import { delay } from 'packages/utils/delay';
 
 async function getInitialState() {
   await delay(4000);

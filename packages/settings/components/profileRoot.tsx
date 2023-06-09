@@ -1,6 +1,6 @@
 'use client';
 
-import { LocalizedState } from 'package/state/components/localizedState';
+import { LocalizedState } from 'packages/state/components/localizedState';
 
 import { ProfileDescription } from './profileDescription';
 import { profileInitialStateAtom } from '../state/profileInitialState';

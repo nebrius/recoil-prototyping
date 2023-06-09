@@ -1,6 +1,6 @@
 'use client';
 
-import { LocalizedState } from 'package/state/components/localizedState';
+import { LocalizedState } from 'packages/state/components/localizedState';
 
 import { AccountType } from './accountType';
 import { accountInitialStateAtom } from '../state/accountInitialState';

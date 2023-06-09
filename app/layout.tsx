@@ -1,6 +1,6 @@
-import { AppRoot } from 'package/common/components/appRoot';
-import { CommonInitialState } from 'package/common/types/commonInitialState';
-import { delay } from 'package/utils/delay';
+import { AppRoot } from 'packages/common/components/appRoot';
+import { CommonInitialState } from 'packages/common/types/commonInitialState';
+import { delay } from 'packages/utils/delay';
 
 import styles from './app.module.css';
 

@@ -1,7 +1,7 @@
 import {
   createInitialStateAtom,
   createUseInitialStateValueHook,
-} from 'package/state/initalStateHelpers';
+} from 'packages/state/initalStateHelpers';
 
 import { accountInitialStateAtom } from './accountInitialState';
 
