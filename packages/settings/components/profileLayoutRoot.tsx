@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutStateRoot } from 'packages/state/components/layoutStateRoot';
+import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
 
 import { ProfileDescription } from './profileDescription';
 import { profileInitialStateAtom } from '../state/profileInitialState';

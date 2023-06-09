@@ -1,7 +1,5 @@
-import {
-  initialStateBasedAtom,
-  createUseInitialStateValueHook,
-} from 'packages/state/initalStateHelpers';
+import { createUseInitialStateValueHook } from 'packages/state/createUseInitialStateValueHook';
+import { initialStateBasedAtom } from 'packages/state/initialStateBasedAtom';
 
 import { accountInitialStateAtom } from './accountInitialState';
 
