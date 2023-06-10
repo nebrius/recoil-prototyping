@@ -13,10 +13,9 @@ export function LayoutStateRoot<InitialState>({
 }: PropsWithChildren<LocalizedStateProps<InitialState>>) {
   const [initialStateLoadable, setInitialState] =
     useRecoilStateLoadable(initialStateAtom);
-  useEffect(
-    () => setInitialState(initialState),
-    [initialState, setInitialState],
-  );
+  // We only want to initialize once, even if initial state later changes (this is a bug)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => setInitialState(initialState), []);
   switch (initialStateLoadable.state) {
     case 'loading': {
       return null;

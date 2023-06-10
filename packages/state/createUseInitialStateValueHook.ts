@@ -11,7 +11,7 @@ export function createUseInitialStateValueHook<T>(
       }
       case 'loading': {
         throw new Error(
-          "Initial state atom not loaded. This hook can only be called in components that are children of this atom's layout?",
+          'Initial state atom not loaded. Did you call this hook outside of its layout root?',
         );
       }
       case 'hasError': {
