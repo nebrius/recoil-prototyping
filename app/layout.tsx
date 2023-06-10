@@ -1,26 +1,15 @@
 import { AppRoot } from 'packages/common/components/appRoot';
 import { CommonInitialState } from 'packages/common/types/commonInitialState';
-import { delay } from 'packages/utils/delay';
+import { get } from 'packages/utils/api';
 
 import styles from './app.module.css';
-
-async function getInitialState(): Promise<CommonInitialState> {
-  await delay(1000);
-  return {
-    currentUser: {
-      id: '12345',
-      name: 'Fry',
-      email: 'fry@planetexpress.com',
-    },
-  };
-}
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const initialState = await getInitialState();
+  const initialState = await get<CommonInitialState>('/base');
   return (
     <html lang="en" className={styles.html}>
       <body className={styles.body}>
