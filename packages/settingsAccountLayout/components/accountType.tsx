@@ -29,7 +29,7 @@ export function AccountType() {
         <option value="standard">Standard</option>
         <option value="pro">Pro</option>
       </select>
-      {status === 'updating' && <span>Updating...</span>}
+      {status === 'updating' && <span>Saving...</span>}
     </div>
   );
 }

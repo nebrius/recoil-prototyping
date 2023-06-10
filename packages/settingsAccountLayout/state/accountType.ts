@@ -15,6 +15,17 @@ const accountTypeAtom = initialStateBasedAtom(accountInitialStateAtom, {
 
 export const useAccountType = createUseInitialStateValueHook(accountTypeAtom);
 
+// export const useSetAccountType = createUseSetAtomHook(
+//   accountTypeAtom,
+//   async (newAccountType, setStatus, setValue) => {
+//      // Optimistically set
+//      setAccountTypeAtom(newAccountType);
+//      setStatus('updating');
+//      await delay(2000);
+//      setStatus('success');
+//   },
+// );
+
 type Status = 'idle' | 'updating' | 'success' | 'error';
 
 export function useSetAccountType(): [
@@ -26,10 +37,11 @@ export function useSetAccountType(): [
 
   const setAccountTypeInternal = useCallback(
     async (newAccountType: AccountType) => {
+      // Optimistically set
+      setAccountTypeAtom(newAccountType);
       setStatus('updating');
       await delay(2000);
       setStatus('success');
-      setAccountTypeAtom(newAccountType);
     },
     [setAccountTypeAtom, setStatus],
   );
