@@ -1,3 +1,5 @@
+export type AccountType = 'standard' | 'pro';
+
 export interface AccountInitialState {
-  type: 'standard' | 'pro';
+  type: AccountType;
 }
