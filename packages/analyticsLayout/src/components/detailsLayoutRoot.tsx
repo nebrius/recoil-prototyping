@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
+import { LayoutStateRoot } from 'packages/state';
 
 import { Views } from './views';
 import { initialStateAtom } from '../state/initialState';

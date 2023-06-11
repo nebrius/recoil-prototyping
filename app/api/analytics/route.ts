@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { InitialState } from 'packages/analyticsLayout';
-import { delay } from 'packages/utils/delay';
+import { delay } from 'packages/utils';
 
 export async function GET() {
   await delay(4000);

@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useState } from 'react';
 import type { RecoilState } from 'recoil';
 import { useSetRecoilState } from 'recoil';

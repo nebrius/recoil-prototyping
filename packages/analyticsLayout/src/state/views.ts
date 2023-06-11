@@ -1,7 +1,9 @@
 'use client';
 
-import { createUseInitialStateValueHook } from 'packages/state/createUseInitialStateValueHook';
-import { initialStateBasedAtom } from 'packages/state/initialStateBasedAtom';
+import {
+  createUseInitialStateValueHook,
+  initialStateBasedAtom,
+} from 'packages/state';
 
 import { initialStateAtom } from './initialState';
 

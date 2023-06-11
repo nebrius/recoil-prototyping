@@ -1,3 +1,5 @@
+'use client';
+
 import type { RecoilValue } from 'recoil';
 import { useRecoilValueLoadable } from 'recoil';
 

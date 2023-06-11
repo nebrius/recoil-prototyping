@@ -1,3 +1,5 @@
+'use client';
+
 import type { AtomOptions, Loadable, RecoilValue, WrappedValue } from 'recoil';
 import { atom, selector } from 'recoil';
 

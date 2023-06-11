@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { CommonInitialState } from 'packages/common';
-import { delay } from 'packages/utils/delay';
+import { delay } from 'packages/utils';
 
 export async function GET() {
   await delay(1000);

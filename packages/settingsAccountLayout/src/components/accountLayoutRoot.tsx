@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
+import { LayoutStateRoot } from 'packages/state';
 
 import { AccountType } from './accountType';
 import { accountInitialStateAtom } from '../state/accountInitialState';

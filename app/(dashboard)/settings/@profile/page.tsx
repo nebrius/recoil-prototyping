@@ -1,6 +1,6 @@
 import { ProfileLayoutRoot } from 'packages/settingsProfileLayout';
 import type { ProfileInitialState } from 'packages/settingsProfileLayout';
-import { get } from 'packages/utils/api';
+import { get } from 'packages/utils';
 
 export default async function Page() {
   const initialState = await get<ProfileInitialState>('/settings/profile');
