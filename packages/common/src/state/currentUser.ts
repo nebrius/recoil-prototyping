@@ -1,3 +1,5 @@
+'use client';
+
 import { atom, selector, useRecoilValue } from 'recoil';
 
 import { initialStateAtom } from './initialState';

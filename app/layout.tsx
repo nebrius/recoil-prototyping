@@ -1,5 +1,5 @@
-import { AppRoot } from 'packages/common/components/appRoot';
-import type { CommonInitialState } from 'packages/common/types/commonInitialState';
+import { AppRoot } from 'packages/common';
+import type { CommonInitialState } from 'packages/common';
 import { get } from 'packages/utils/api';
 
 import styles from './app.module.css';

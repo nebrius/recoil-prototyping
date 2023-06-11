@@ -1,4 +1,4 @@
-import { useCurrentUser } from 'packages/common/state/currentUser';
+import { useCurrentUser } from 'packages/common';
 
 import type { ChangeEvent } from 'react';
 import { useCallback } from 'react';
