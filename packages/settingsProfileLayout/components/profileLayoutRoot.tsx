@@ -4,7 +4,7 @@ import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
 
 import { ProfileDescription } from './profileDescription';
 import { profileInitialStateAtom } from '../state/profileInitialState';
-import { ProfileInitialState } from '../types/profileInitialState';
+import type { ProfileInitialState } from '../types/profileInitialState';
 
 interface ProfileLayoutRootProps {
   initialState: ProfileInitialState;

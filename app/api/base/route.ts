@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { CommonInitialState } from 'packages/common/types/commonInitialState';
+import type { CommonInitialState } from 'packages/common/types/commonInitialState';
 import { delay } from 'packages/utils/delay';
 
 export async function GET() {

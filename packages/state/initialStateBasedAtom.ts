@@ -1,11 +1,5 @@
-import {
-  AtomOptions,
-  Loadable,
-  RecoilValue,
-  WrappedValue,
-  atom,
-  selector,
-} from 'recoil';
+import type { AtomOptions, Loadable, RecoilValue, WrappedValue } from 'recoil';
+import { atom, selector } from 'recoil';
 
 type InitialStateAtomOptions<AtomValue, InitialState> = Omit<
   AtomOptions<AtomValue>,

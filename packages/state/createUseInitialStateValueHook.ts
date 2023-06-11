@@ -1,4 +1,5 @@
-import { RecoilValue, useRecoilValueLoadable } from 'recoil';
+import type { RecoilValue } from 'recoil';
+import { useRecoilValueLoadable } from 'recoil';
 
 export function createUseInitialStateValueHook<T>(
   initalStateValueAtom: RecoilValue<T>,

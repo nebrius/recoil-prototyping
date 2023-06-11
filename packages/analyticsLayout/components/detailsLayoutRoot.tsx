@@ -4,7 +4,7 @@ import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
 
 import { Views } from './views';
 import { initialStateAtom } from '../state/initialState';
-import { InitialState } from '../types/initialState';
+import type { InitialState } from '../types/initialState';
 
 interface DetailsLayoutRootProps {
   initialState: InitialState;

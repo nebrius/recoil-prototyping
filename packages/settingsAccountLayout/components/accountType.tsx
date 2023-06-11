@@ -1,10 +1,11 @@
 import { useCurrentUser } from 'packages/common/state/currentUser';
 
-import { ChangeEvent, useCallback } from 'react';
+import type { ChangeEvent } from 'react';
+import { useCallback } from 'react';
 
 import styles from './accountType.module.css';
 import { useAccountType, useSetAccountType } from '../state/accountType';
-import { AccountType } from '../types/accountInitialState';
+import type { AccountType } from '../types/accountInitialState';
 
 export function AccountType() {
   const currentUser = useCurrentUser();

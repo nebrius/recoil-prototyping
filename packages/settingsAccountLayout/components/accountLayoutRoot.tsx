@@ -4,7 +4,7 @@ import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
 
 import { AccountType } from './accountType';
 import { accountInitialStateAtom } from '../state/accountInitialState';
-import { AccountInitialState } from '../types/accountInitialState';
+import type { AccountInitialState } from '../types/accountInitialState';
 
 interface AccountLayoutRootProps {
   initialState: AccountInitialState;

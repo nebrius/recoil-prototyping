@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { ProfileInitialState } from 'packages/settingsProfileLayout/types/profileInitialState';
+import type { ProfileInitialState } from 'packages/settingsProfileLayout/types/profileInitialState';
 import { delay } from 'packages/utils/delay';
 
 export async function GET() {

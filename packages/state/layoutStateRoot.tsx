@@ -1,5 +1,7 @@
-import { PropsWithChildren, useEffect } from 'react';
-import { RecoilState, useRecoilStateLoadable } from 'recoil';
+import type { PropsWithChildren } from 'react';
+import { useEffect } from 'react';
+import type { RecoilState } from 'recoil';
+import { useRecoilStateLoadable } from 'recoil';
 
 interface LocalizedStateProps<InitialState> {
   initialState: InitialState;

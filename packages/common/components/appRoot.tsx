@@ -1,13 +1,13 @@
 'use client';
 
 import { LayoutStateRoot } from 'packages/state/layoutStateRoot';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { RecoilRoot } from 'recoil';
 
 import { AppHeader } from './header';
 import styles from './styles.module.css';
 import { initialStateAtom } from '../state/initialState';
-import { CommonInitialState } from '../types/commonInitialState';
+import type { CommonInitialState } from '../types/commonInitialState';
 
 interface AppRoot {
   initialState: CommonInitialState;

@@ -100,6 +100,12 @@ module.exports = {
             'error',
             'interface',
         ],
+        '@typescript-eslint/consistent-type-imports': [
+            'error',
+            {
+                prefer: 'type-imports'
+            }
+        ],
         // We disable this because it's customary to leave out the return type
         // of a `render` method. We might reconsider re-enabling this if and
         // when class components are done away.

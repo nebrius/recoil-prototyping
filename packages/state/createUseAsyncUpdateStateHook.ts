@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
-import { RecoilState, useSetRecoilState } from 'recoil';
+import type { RecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 type Status = 'idle' | 'updating' | 'success' | 'error';
 
