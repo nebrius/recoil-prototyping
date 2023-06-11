@@ -1,6 +1,6 @@
 'use client';
 
-import { useCurrentUser } from 'packages/common';
+import { useCurrentUser } from '@rp/common';
 
 import type { ChangeEvent } from 'react';
 import { useCallback } from 'react';

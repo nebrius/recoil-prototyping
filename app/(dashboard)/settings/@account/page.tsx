@@ -1,6 +1,6 @@
-import { AccountLayoutRoot } from 'packages/settingsAccountLayout';
-import type { AccountInitialState } from 'packages/settingsAccountLayout';
-import { get } from 'packages/utils';
+import { AccountLayoutRoot } from '@rp/settingsAccountLayout';
+import type { AccountInitialState } from '@rp/settingsAccountLayout';
+import { get } from '@rp/utils';
 
 export default async function Page() {
   const initialState = await get<AccountInitialState>('/settings/account');

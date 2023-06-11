@@ -23,7 +23,12 @@
       }
     ],
     "rootDir": ".",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@rp/*": [
+        "./packages/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",

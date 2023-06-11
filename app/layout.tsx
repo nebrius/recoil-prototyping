@@ -1,6 +1,6 @@
-import { AppRoot } from 'packages/common';
-import type { CommonInitialState } from 'packages/common';
-import { get } from 'packages/utils';
+import { AppRoot } from '@rp/common';
+import type { CommonInitialState } from '@rp/common';
+import { get } from '@rp/utils';
 
 import styles from './app.module.css';
 

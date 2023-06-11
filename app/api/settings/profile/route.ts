@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import type { ProfileInitialState } from 'packages/settingsProfileLayout';
-import { delay } from 'packages/utils';
+import type { ProfileInitialState } from '@rp/settingsProfileLayout';
+import { delay } from '@rp/utils';
 
 export async function GET() {
   await delay(4000);

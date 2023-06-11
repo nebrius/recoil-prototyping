@@ -4,9 +4,9 @@ import {
   createUseAsyncUpdateStateHook,
   createUseInitialStateValueHook,
   initialStateBasedAtom,
-} from 'packages/state';
+} from '@rp/state';
 
-import { delay } from 'packages/utils';
+import { delay } from '@rp/utils';
 
 import { accountInitialStateAtom } from './accountInitialState';
 

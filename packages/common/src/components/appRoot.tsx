@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutStateRoot } from 'packages/state';
+import { LayoutStateRoot } from '@rp/state';
 import type { PropsWithChildren } from 'react';
 import { RecoilRoot } from 'recoil';
 

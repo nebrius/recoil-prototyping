@@ -3,7 +3,7 @@
 import {
   createUseInitialStateValueHook,
   initialStateBasedAtom,
-} from 'packages/state';
+} from '@rp/state';
 
 import { initialStateAtom } from './initialState';
 
