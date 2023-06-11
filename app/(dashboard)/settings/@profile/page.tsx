@@ -1,5 +1,5 @@
-import { ProfileLayoutRoot } from 'packages/settingsProfileLayout/components/profileLayoutRoot';
-import type { ProfileInitialState } from 'packages/settingsProfileLayout/types/profileInitialState';
+import { ProfileLayoutRoot } from 'packages/settingsProfileLayout';
+import type { ProfileInitialState } from 'packages/settingsProfileLayout';
 import { get } from 'packages/utils/api';
 
 export default async function Page() {

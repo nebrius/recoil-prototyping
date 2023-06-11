@@ -1,3 +1,5 @@
+'use client';
+
 import { useProfileDescription } from '../state/profileDescription';
 
 export function ProfileDescription() {

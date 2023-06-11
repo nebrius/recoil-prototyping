@@ -1,3 +1,5 @@
+'use client';
+
 import { atom } from 'recoil';
 
 import type { ProfileInitialState } from '../types/profileInitialState';
