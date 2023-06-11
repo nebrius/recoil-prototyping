@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { AccountInitialState } from 'packages/settingsAccountLayout/types/accountInitialState';
+import type { AccountInitialState } from 'packages/settingsAccountLayout';
 import { delay } from 'packages/utils/delay';
 
 export async function GET() {

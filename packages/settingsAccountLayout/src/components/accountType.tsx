@@ -1,3 +1,5 @@
+'use client';
+
 import { useCurrentUser } from 'packages/common';
 
 import type { ChangeEvent } from 'react';

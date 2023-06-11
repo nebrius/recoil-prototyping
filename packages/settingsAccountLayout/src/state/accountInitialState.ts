@@ -1,3 +1,5 @@
+'use client';
+
 import { atom } from 'recoil';
 
 import type { AccountInitialState } from '../types/accountInitialState';

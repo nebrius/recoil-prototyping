@@ -1,5 +1,5 @@
-import { AccountLayoutRoot } from 'packages/settingsAccountLayout/components/accountLayoutRoot';
-import type { AccountInitialState } from 'packages/settingsAccountLayout/types/accountInitialState';
+import { AccountLayoutRoot } from 'packages/settingsAccountLayout';
+import type { AccountInitialState } from 'packages/settingsAccountLayout';
 import { get } from 'packages/utils/api';
 
 export default async function Page() {
