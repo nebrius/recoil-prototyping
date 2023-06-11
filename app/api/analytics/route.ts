@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { InitialState } from 'packages/analyticsLayout/types/initialState';
+import type { InitialState } from 'packages/analyticsLayout';
 import { delay } from 'packages/utils/delay';
 
 export async function GET() {

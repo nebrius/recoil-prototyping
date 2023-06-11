@@ -1,5 +1,5 @@
-import { DetailsLayoutRoot } from 'packages/analyticsLayout/components/detailsLayoutRoot';
-import type { InitialState } from 'packages/analyticsLayout/types/initialState';
+import { DetailsLayoutRoot } from 'packages/analyticsLayout';
+import type { InitialState } from 'packages/analyticsLayout';
 import { get } from 'packages/utils/api';
 
 export default async function Page() {

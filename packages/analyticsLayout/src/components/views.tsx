@@ -1,3 +1,5 @@
+'use client';
+
 import { useAnalyticsViews } from '../state/views';
 
 export function Views() {
