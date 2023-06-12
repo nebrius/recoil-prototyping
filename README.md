@@ -8,13 +8,7 @@ Start by installing dependencies:
 npm i
 ```
 
-Then, set up the database:
-
-```
-npm run create-db
-```
-
-Finally, start the server:
+Then, start the server:
 
 ```bash
 npm run dev
