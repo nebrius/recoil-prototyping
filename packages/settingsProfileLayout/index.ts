@@ -1,2 +1,2 @@
 export { ProfileLayoutRoot } from './src/components/profileLayoutRoot';
-export type { ProfileInitialState } from './src/types/profileInitialState';
+export type { ProfileBootstrapData as ProfileInitialState } from './src/types/profileBootstrapData';

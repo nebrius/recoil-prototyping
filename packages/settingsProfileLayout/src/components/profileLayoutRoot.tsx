@@ -1,22 +1,22 @@
 'use client';
 
-import { LayoutStateRoot } from '@rp/state';
+import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { ProfileDescription } from './profileDescription';
-import { profileInitialStateAtom } from '../state/profileInitialState';
-import type { ProfileInitialState } from '../types/profileInitialState';
+import { profileBootstrapRootAtom } from '../state/profileBootstrapRootAtom';
+import type { ProfileBootstrapData } from '../types/profileBootstrapData';
 
 interface ProfileLayoutRootProps {
-  initialState: ProfileInitialState;
+  initialState: ProfileBootstrapData;
 }
 
 export function ProfileLayoutRoot({ initialState }: ProfileLayoutRootProps) {
   return (
-    <LayoutStateRoot
-      initialState={initialState}
-      initialStateAtom={profileInitialStateAtom}
+    <BootstrapRoot
+      bootstrapData={initialState}
+      bootstrapRootAtom={profileBootstrapRootAtom}
     >
       <ProfileDescription />
-    </LayoutStateRoot>
+    </BootstrapRoot>
   );
 }

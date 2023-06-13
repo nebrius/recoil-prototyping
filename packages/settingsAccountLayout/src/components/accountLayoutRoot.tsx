@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutStateRoot } from '@rp/state';
+import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AccountType } from './accountType';
 import { accountInitialStateAtom } from '../state/accountInitialState';
@@ -12,11 +12,11 @@ interface AccountLayoutRootProps {
 
 export function AccountLayoutRoot({ initialState }: AccountLayoutRootProps) {
   return (
-    <LayoutStateRoot
-      initialState={initialState}
-      initialStateAtom={accountInitialStateAtom}
+    <BootstrapRoot
+      bootstrapData={initialState}
+      bootstrapRootAtom={accountInitialStateAtom}
     >
       <AccountType />
-    </LayoutStateRoot>
+    </BootstrapRoot>
   );
 }

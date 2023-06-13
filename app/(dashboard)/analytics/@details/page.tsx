@@ -4,5 +4,5 @@ import { get } from '@rp/utils';
 
 export default async function Page() {
   const initialState = await get<InitialState>('/analytics');
-  return <DetailsLayoutRoot initialState={initialState} />;
+  return <DetailsLayoutRoot bootstrapData={initialState} />;
 }

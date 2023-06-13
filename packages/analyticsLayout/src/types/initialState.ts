@@ -1,3 +1,3 @@
-export interface InitialState {
+export interface AnalyticsBootstrapData {
   views: number;
 }

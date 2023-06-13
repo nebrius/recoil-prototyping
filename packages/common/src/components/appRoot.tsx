@@ -1,8 +1,9 @@
 'use client';
 
-import { LayoutStateRoot } from '@rp/state';
 import type { PropsWithChildren } from 'react';
 import { RecoilRoot } from 'recoil';
+
+import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AppHeader } from './header';
 import styles from './styles.module.css';
@@ -19,14 +20,14 @@ export function AppRoot({
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot>
-      <LayoutStateRoot
-        initialState={initialState}
-        initialStateAtom={initialStateAtom}
+      <BootstrapRoot
+        bootstrapData={initialState}
+        bootstrapRootAtom={initialStateAtom}
       >
         <AppHeader />
         <div className={styles.appContent}>{children}</div>
         <footer className={styles.appFooter}>Footer content</footer>
-      </LayoutStateRoot>
+      </BootstrapRoot>
     </RecoilRoot>
   );
 }

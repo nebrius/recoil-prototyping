@@ -1,22 +1,22 @@
 'use client';
 
-import { LayoutStateRoot } from '@rp/state';
+import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { Views } from './views';
-import { initialStateAtom } from '../state/initialState';
-import type { InitialState } from '../types/initialState';
+import { analyticsBootstrapRootAtom } from '../state/analyticsBootstrapRootAtom';
+import type { AnalyticsBootstrapData } from '../types/initialState';
 
 interface DetailsLayoutRootProps {
-  initialState: InitialState;
+  bootstrapData: AnalyticsBootstrapData;
 }
 
-export function DetailsLayoutRoot({ initialState }: DetailsLayoutRootProps) {
+export function DetailsLayoutRoot({ bootstrapData }: DetailsLayoutRootProps) {
   return (
-    <LayoutStateRoot
-      initialState={initialState}
-      initialStateAtom={initialStateAtom}
+    <BootstrapRoot
+      bootstrapData={bootstrapData}
+      bootstrapRootAtom={analyticsBootstrapRootAtom}
     >
       <Views />
-    </LayoutStateRoot>
+    </BootstrapRoot>
   );
 }

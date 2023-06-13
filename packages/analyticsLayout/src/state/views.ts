@@ -1,16 +1,12 @@
 'use client';
 
-import {
-  createUseInitialStateValueHook,
-  initialStateBasedAtom,
-} from '@rp/state';
+import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { initialStateAtom } from './initialState';
+import { analyticsBootstrapRootAtom } from './analyticsBootstrapRootAtom';
 
-const analyticsViewsAtom = initialStateBasedAtom(initialStateAtom, {
+const analyticsViewsAtom = bootstrappedAtom(analyticsBootstrapRootAtom, {
   key: 'analytics:analyticsViewsAtom',
   initialValue: (initialState) => initialState.views,
 });
 
-export const useAnalyticsViews =
-  createUseInitialStateValueHook(analyticsViewsAtom);
+export const useAnalyticsViews = bootstrappedAtomValueHook(analyticsViewsAtom);

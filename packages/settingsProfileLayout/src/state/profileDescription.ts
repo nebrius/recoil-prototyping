@@ -1,17 +1,14 @@
 'use client';
 
-import {
-  createUseInitialStateValueHook,
-  initialStateBasedAtom,
-} from '@rp/state';
+import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { profileInitialStateAtom } from './profileInitialState';
+import { profileBootstrapRootAtom } from './profileBootstrapRootAtom';
 
-const profileDescriptionAtom = initialStateBasedAtom(profileInitialStateAtom, {
+const profileDescriptionAtom = bootstrappedAtom(profileBootstrapRootAtom, {
   key: 'settings:profileDescriptionAtom',
   initialValue: (initialState) => initialState.description,
 });
 
-export const useProfileDescription = createUseInitialStateValueHook(
+export const useProfileDescription = bootstrappedAtomValueHook(
   profileDescriptionAtom,
 );
