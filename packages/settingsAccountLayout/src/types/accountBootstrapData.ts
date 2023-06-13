@@ -1,5 +1,5 @@
 export type AccountType = 'standard' | 'pro';
 
-export interface AccountInitialState {
+export interface AccountBootstrapData {
   type: AccountType;
 }

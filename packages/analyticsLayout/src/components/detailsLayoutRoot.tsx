@@ -4,7 +4,7 @@ import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { Views } from './views';
 import { analyticsBootstrapRootAtom } from '../state/analyticsBootstrapRootAtom';
-import type { AnalyticsBootstrapData } from '../types/initialState';
+import type { AnalyticsBootstrapData } from '../types/analyticsBootstrapData';
 
 interface DetailsLayoutRootProps {
   bootstrapData: AnalyticsBootstrapData;

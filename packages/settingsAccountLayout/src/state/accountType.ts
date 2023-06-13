@@ -1,21 +1,18 @@
 'use client';
 
-import {
-  createUseAsyncUpdateStateHook,
-  createUseInitialStateValueHook,
-  initialStateBasedAtom,
-} from '@rp/state';
-
+import { createUseAsyncUpdateStateHook } from '@rp/state';
 import { delay } from '@rp/utils';
 
-import { accountInitialStateAtom } from './accountInitialState';
+import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-const accountTypeAtom = initialStateBasedAtom(accountInitialStateAtom, {
+import { accountBootstrapRootAtom } from './accountBootstrapRootAtom';
+
+const accountTypeAtom = bootstrappedAtom(accountBootstrapRootAtom, {
   key: 'settings:accountTypeAtom',
-  initialValue: (initialState) => initialState.type,
+  initialValue: ({ type }) => type,
 });
 
-export const useAccountType = createUseInitialStateValueHook(accountTypeAtom);
+export const useAccountType = bootstrappedAtomValueHook(accountTypeAtom);
 
 export const useSetAccountType = createUseAsyncUpdateStateHook(
   accountTypeAtom,

@@ -2,7 +2,9 @@
 
 import { bootstrapRootAtom } from 'recoil-bootstrap';
 
-import type { AnalyticsBootstrapData } from '../types/initialState';
+import type { AnalyticsBootstrapData } from '../types/analyticsBootstrapData';
 
 export const analyticsBootstrapRootAtom =
-  bootstrapRootAtom<AnalyticsBootstrapData>('analytics:initialStateAtom');
+  bootstrapRootAtom<AnalyticsBootstrapData>(
+    'analytics:analyticsBootstrapRootAtom',
+  );

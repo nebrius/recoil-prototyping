@@ -1,5 +1,5 @@
 import { AppRoot } from '@rp/common';
-import type { CommonInitialState } from '@rp/common';
+import type { CommonBootstrapData } from '@rp/common';
 import { get } from '@rp/utils';
 
 import styles from './app.module.css';
@@ -9,11 +9,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const initialState = await get<CommonInitialState>('/base');
+  const bootstrapData = await get<CommonBootstrapData>('/base');
   return (
     <html lang="en" className={styles.html}>
       <body className={styles.body}>
-        <AppRoot initialState={initialState}>{children}</AppRoot>
+        <AppRoot bootstrapData={bootstrapData}>{children}</AppRoot>
       </body>
     </html>
   );

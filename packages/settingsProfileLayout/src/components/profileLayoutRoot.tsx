@@ -7,13 +7,13 @@ import { profileBootstrapRootAtom } from '../state/profileBootstrapRootAtom';
 import type { ProfileBootstrapData } from '../types/profileBootstrapData';
 
 interface ProfileLayoutRootProps {
-  initialState: ProfileBootstrapData;
+  bootstrapData: ProfileBootstrapData;
 }
 
-export function ProfileLayoutRoot({ initialState }: ProfileLayoutRootProps) {
+export function ProfileLayoutRoot({ bootstrapData }: ProfileLayoutRootProps) {
   return (
     <BootstrapRoot
-      bootstrapData={initialState}
+      bootstrapData={bootstrapData}
       bootstrapRootAtom={profileBootstrapRootAtom}
     >
       <ProfileDescription />

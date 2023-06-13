@@ -3,18 +3,18 @@
 import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AccountType } from './accountType';
-import { accountInitialStateAtom } from '../state/accountInitialState';
-import type { AccountInitialState } from '../types/accountInitialState';
+import { accountBootstrapRootAtom } from '../state/accountBootstrapRootAtom';
+import type { AccountBootstrapData } from '../types/accountBootstrapData';
 
 interface AccountLayoutRootProps {
-  initialState: AccountInitialState;
+  bootstrapData: AccountBootstrapData;
 }
 
-export function AccountLayoutRoot({ initialState }: AccountLayoutRootProps) {
+export function AccountLayoutRoot({ bootstrapData }: AccountLayoutRootProps) {
   return (
     <BootstrapRoot
-      bootstrapData={initialState}
-      bootstrapRootAtom={accountInitialStateAtom}
+      bootstrapData={bootstrapData}
+      bootstrapRootAtom={accountBootstrapRootAtom}
     >
       <AccountType />
     </BootstrapRoot>

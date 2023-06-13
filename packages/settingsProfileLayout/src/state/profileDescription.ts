@@ -6,7 +6,7 @@ import { profileBootstrapRootAtom } from './profileBootstrapRootAtom';
 
 const profileDescriptionAtom = bootstrappedAtom(profileBootstrapRootAtom, {
   key: 'settings:profileDescriptionAtom',
-  initialValue: (initialState) => initialState.description,
+  initialValue: ({ description }) => description,
 });
 
 export const useProfileDescription = bootstrappedAtomValueHook(

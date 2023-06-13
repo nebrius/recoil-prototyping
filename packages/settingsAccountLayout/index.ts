@@ -1,2 +1,2 @@
 export { AccountLayoutRoot } from './src/components/accountLayoutRoot';
-export type { AccountInitialState } from './src/types/accountInitialState';
+export type { AccountBootstrapData } from './src/types/accountBootstrapData';

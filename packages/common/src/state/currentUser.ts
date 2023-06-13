@@ -1,21 +1,12 @@
 'use client';
 
-import { atom, selector, useRecoilValue } from 'recoil';
+import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { initialStateAtom } from './initialState';
+import { commonBootstrapRootAtom } from './commonBootstrapRootAtom';
 
-const currentUserAtom = atom({
+const currentUserAtom = bootstrappedAtom(commonBootstrapRootAtom, {
   key: 'currentUserAtom',
-
-  // We set the default to a selector so that we can grab the initial value
-  // from the initial value atom, which is set during first render in the
-  // Recoil root in AppRoot
-  default: selector({
-    key: 'currentUserAtomInitializer',
-    get: ({ get }) => get(initialStateAtom).currentUser,
-  }),
+  initialValue: ({ currentUser }) => currentUser,
 });
 
-export function useCurrentUser() {
-  return useRecoilValue(currentUserAtom);
-}
+export const useCurrentUser = bootstrappedAtomValueHook(currentUserAtom);

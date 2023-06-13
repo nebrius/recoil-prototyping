@@ -7,22 +7,22 @@ import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AppHeader } from './header';
 import styles from './styles.module.css';
-import { initialStateAtom } from '../state/initialState';
-import type { CommonInitialState } from '../types/commonInitialState';
+import { commonBootstrapRootAtom } from '../state/commonBootstrapRootAtom';
+import type { CommonBootstrapData } from '../types/commonBootstrapData';
 
 interface AppRoot {
-  initialState: CommonInitialState;
+  bootstrapData: CommonBootstrapData;
 }
 
 export function AppRoot({
   children,
-  initialState,
+  bootstrapData,
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot>
       <BootstrapRoot
-        bootstrapData={initialState}
-        bootstrapRootAtom={initialStateAtom}
+        bootstrapData={bootstrapData}
+        bootstrapRootAtom={commonBootstrapRootAtom}
       >
         <AppHeader />
         <div className={styles.appContent}>{children}</div>

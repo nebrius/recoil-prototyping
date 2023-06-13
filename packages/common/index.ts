@@ -1,3 +1,3 @@
 export { AppRoot } from './src/components/appRoot';
-export type { CommonInitialState } from './src/types/commonInitialState';
+export type { CommonBootstrapData } from './src/types/commonBootstrapData';
 export { useCurrentUser } from './src/state/currentUser';

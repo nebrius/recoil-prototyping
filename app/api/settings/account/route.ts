@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
-import type { AccountInitialState } from '@rp/settingsAccountLayout';
+import type { AccountBootstrapData } from '@rp/settingsAccountLayout';
 import { delay } from '@rp/utils';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   await delay(2000);
-  const initialState: AccountInitialState = {
+  const bootstrapData: AccountBootstrapData = {
     type: 'pro',
   };
-  return NextResponse.json(initialState);
+  return NextResponse.json(bootstrapData);
 }

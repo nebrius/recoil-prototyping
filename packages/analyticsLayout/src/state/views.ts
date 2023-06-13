@@ -6,7 +6,7 @@ import { analyticsBootstrapRootAtom } from './analyticsBootstrapRootAtom';
 
 const analyticsViewsAtom = bootstrappedAtom(analyticsBootstrapRootAtom, {
   key: 'analytics:analyticsViewsAtom',
-  initialValue: (initialState) => initialState.views,
+  initialValue: ({ views }) => views,
 });
 
 export const useAnalyticsViews = bootstrappedAtomValueHook(analyticsViewsAtom);

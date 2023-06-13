@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 
 import styles from './accountType.module.css';
 import { useAccountType, useSetAccountType } from '../state/accountType';
-import type { AccountType } from '../types/accountInitialState';
+import type { AccountType } from '../types/accountBootstrapData';
 
 export function AccountType() {
   const currentUser = useCurrentUser();

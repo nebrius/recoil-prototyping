@@ -1,5 +1,5 @@
 import type { User } from './user';
 
-export interface CommonInitialState {
+export interface CommonBootstrapData {
   currentUser: User;
 }
