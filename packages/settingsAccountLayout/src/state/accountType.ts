@@ -5,9 +5,9 @@ import { delay } from '@rp/utils';
 
 import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { accountBootstrapRootAtom } from './accountBootstrapRootAtom';
+import { accountRootAtom } from './accountRootAtom';
 
-const accountTypeAtom = bootstrappedAtom(accountBootstrapRootAtom, {
+const accountTypeAtom = bootstrappedAtom(accountRootAtom, {
   key: 'settings:accountTypeAtom',
   initialValue: ({ type }) => type,
 });

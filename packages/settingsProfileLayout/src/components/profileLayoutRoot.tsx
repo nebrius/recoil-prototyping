@@ -3,7 +3,7 @@
 import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { ProfileDescription } from './profileDescription';
-import { profileBootstrapRootAtom } from '../state/profileBootstrapRootAtom';
+import { profileRootAtom } from '../state/profileRootAtom';
 import type { ProfileBootstrapData } from '../types/profileBootstrapData';
 
 interface ProfileLayoutRootProps {
@@ -12,10 +12,7 @@ interface ProfileLayoutRootProps {
 
 export function ProfileLayoutRoot({ bootstrapData }: ProfileLayoutRootProps) {
   return (
-    <BootstrapRoot
-      bootstrapData={bootstrapData}
-      bootstrapRootAtom={profileBootstrapRootAtom}
-    >
+    <BootstrapRoot bootstrapData={bootstrapData} rootAtom={profileRootAtom}>
       <ProfileDescription />
     </BootstrapRoot>
   );

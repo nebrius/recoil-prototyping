@@ -2,9 +2,9 @@
 
 import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { profileBootstrapRootAtom } from './profileBootstrapRootAtom';
+import { profileRootAtom } from './profileRootAtom';
 
-const profileDescriptionAtom = bootstrappedAtom(profileBootstrapRootAtom, {
+const profileDescriptionAtom = bootstrappedAtom(profileRootAtom, {
   key: 'settings:profileDescriptionAtom',
   initialValue: ({ description }) => description,
 });

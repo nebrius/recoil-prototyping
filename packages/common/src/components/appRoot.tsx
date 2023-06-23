@@ -7,7 +7,7 @@ import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AppHeader } from './header';
 import styles from './styles.module.css';
-import { commonBootstrapRootAtom } from '../state/commonBootstrapRootAtom';
+import { commonRootAtom } from '../state/commonRootAtom';
 import type { CommonBootstrapData } from '../types/commonBootstrapData';
 
 interface AppRoot {
@@ -20,10 +20,7 @@ export function AppRoot({
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot>
-      <BootstrapRoot
-        bootstrapData={bootstrapData}
-        bootstrapRootAtom={commonBootstrapRootAtom}
-      >
+      <BootstrapRoot bootstrapData={bootstrapData} rootAtom={commonRootAtom}>
         <AppHeader />
         <div className={styles.appContent}>{children}</div>
         <footer className={styles.appFooter}>Footer content</footer>

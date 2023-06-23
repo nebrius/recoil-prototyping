@@ -3,7 +3,7 @@
 import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { Views } from './views';
-import { analyticsBootstrapRootAtom } from '../state/analyticsBootstrapRootAtom';
+import { analyticsRootAtom } from '../state/analyticsRootAtom';
 import type { AnalyticsBootstrapData } from '../types/analyticsBootstrapData';
 
 interface DetailsLayoutRootProps {
@@ -12,10 +12,7 @@ interface DetailsLayoutRootProps {
 
 export function DetailsLayoutRoot({ bootstrapData }: DetailsLayoutRootProps) {
   return (
-    <BootstrapRoot
-      bootstrapData={bootstrapData}
-      bootstrapRootAtom={analyticsBootstrapRootAtom}
-    >
+    <BootstrapRoot bootstrapData={bootstrapData} rootAtom={analyticsRootAtom}>
       <Views />
     </BootstrapRoot>
   );

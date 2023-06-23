@@ -3,7 +3,7 @@
 import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AccountType } from './accountType';
-import { accountBootstrapRootAtom } from '../state/accountBootstrapRootAtom';
+import { accountRootAtom } from '../state/accountRootAtom';
 import type { AccountBootstrapData } from '../types/accountBootstrapData';
 
 interface AccountLayoutRootProps {
@@ -12,10 +12,7 @@ interface AccountLayoutRootProps {
 
 export function AccountLayoutRoot({ bootstrapData }: AccountLayoutRootProps) {
   return (
-    <BootstrapRoot
-      bootstrapData={bootstrapData}
-      bootstrapRootAtom={accountBootstrapRootAtom}
-    >
+    <BootstrapRoot bootstrapData={bootstrapData} rootAtom={accountRootAtom}>
       <AccountType />
     </BootstrapRoot>
   );

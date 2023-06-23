@@ -2,9 +2,9 @@
 
 import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { commonBootstrapRootAtom } from './commonBootstrapRootAtom';
+import { commonRootAtom } from './commonRootAtom';
 
-const currentUserAtom = bootstrappedAtom(commonBootstrapRootAtom, {
+const currentUserAtom = bootstrappedAtom(commonRootAtom, {
   key: 'currentUserAtom',
   initialValue: ({ currentUser }) => currentUser,
 });
