@@ -7,8 +7,13 @@
   padding: 0 20px;
 }
 
-.appHeader > h2 {
+.appHeader>h2 {
   flex-grow: 1;
+}
+
+.appHeader>h2>a {
+  color: white;
+  text-decoration: none;
 }
 
 .appContent {
@@ -39,7 +44,7 @@
   margin-right: 20px;
 }
 
-.nav > a {
+.nav>a {
   margin: 5px 0;
 }
 

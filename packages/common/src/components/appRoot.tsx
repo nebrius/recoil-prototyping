@@ -2,7 +2,6 @@
 
 import type { PropsWithChildren } from 'react';
 import { RecoilRoot } from 'recoil';
-
 import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AppHeader } from './header';

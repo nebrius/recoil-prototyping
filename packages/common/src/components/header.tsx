@@ -7,7 +7,9 @@ export function AppHeader() {
   const currentUser = useCurrentUser();
   return (
     <header className={styles.appHeader}>
-      <h2>Example Testing App</h2>
+      <h2>
+        <a href="/">Recoil Prototyping</a>
+      </h2>
       <span>{currentUser.name}</span>
     </header>
   );

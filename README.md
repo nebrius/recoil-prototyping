@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Recoil Prototyping
+
+I created this demo repo to explore using Recoil and Next.js together. This demo
+is written twice: once using Next.js' new [App Router](https://nextjs.org/docs/app) paradigm, and again using the older [Pages Router](https://nextjs.org/docs/pages) paradigm.
 
 ## Getting Started
 
@@ -14,7 +17,7 @@ Then, start the server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to explore
 
 ## License
 
