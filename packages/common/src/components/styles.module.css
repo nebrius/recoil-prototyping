@@ -23,3 +23,26 @@
   background-color: #333;
   text-align: center;
 }
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+  padding-top: 20px;
+  margin-right: 20px;
+}
+
+.nav > a {
+  margin: 5px 0;
+}
+
+.navContent {
+  flex-grow: 1;
+}
