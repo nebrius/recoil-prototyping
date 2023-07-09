@@ -2,9 +2,9 @@
 
 import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
 
-import { analyticsRootAtom } from './analyticsRootAtom';
+import { AnalyticsBootstrapRoot } from './analyticsBootstrapRoot';
 
-const analyticsViewsAtom = bootstrappedAtom(analyticsRootAtom, {
+const analyticsViewsAtom = bootstrappedAtom(AnalyticsBootstrapRoot, {
   key: 'analytics:analyticsViewsAtom',
   initialValue: ({ views }) => views,
 });

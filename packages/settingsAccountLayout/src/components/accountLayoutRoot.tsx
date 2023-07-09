@@ -1,9 +1,7 @@
 'use client';
 
-import { BootstrapRoot } from 'recoil-bootstrap';
-
 import { AccountType } from './accountType';
-import { accountRootAtom } from '../state/accountRootAtom';
+import { AccountBootstrapRoot } from '../state/accountBootstrapRoot';
 import type { AccountBootstrapData } from '../types/accountBootstrapData';
 
 interface AccountLayoutRootProps {
@@ -12,8 +10,8 @@ interface AccountLayoutRootProps {
 
 export function AccountLayoutRoot({ bootstrapData }: AccountLayoutRootProps) {
   return (
-    <BootstrapRoot bootstrapData={bootstrapData} rootAtom={accountRootAtom}>
+    <AccountBootstrapRoot.Provider bootstrapData={bootstrapData}>
       <AccountType />
-    </BootstrapRoot>
+    </AccountBootstrapRoot.Provider>
   );
 }

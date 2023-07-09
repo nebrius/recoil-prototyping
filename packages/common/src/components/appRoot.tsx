@@ -2,11 +2,10 @@
 
 import type { PropsWithChildren } from 'react';
 import { RecoilRoot } from 'recoil';
-import { BootstrapRoot } from 'recoil-bootstrap';
 
 import { AppHeader } from './header';
 import styles from './styles.module.css';
-import { commonRootAtom } from '../state/commonRootAtom';
+import { CommonBootstrapRoot } from '../state/commonBootstrapRoot';
 import type { CommonBootstrapData } from '../types/commonBootstrapData';
 
 interface AppRoot {
@@ -19,11 +18,11 @@ export function AppRoot({
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot>
-      <BootstrapRoot bootstrapData={bootstrapData} rootAtom={commonRootAtom}>
+      <CommonBootstrapRoot.Provider bootstrapData={bootstrapData}>
         <AppHeader />
         <div className={styles.appContent}>{children}</div>
         <footer className={styles.appFooter}>Footer content</footer>
-      </BootstrapRoot>
+      </CommonBootstrapRoot.Provider>
     </RecoilRoot>
   );
 }

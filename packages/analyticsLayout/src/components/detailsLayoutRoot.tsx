@@ -1,9 +1,7 @@
 'use client';
 
-import { BootstrapRoot } from 'recoil-bootstrap';
-
 import { Views } from './views';
-import { analyticsRootAtom } from '../state/analyticsRootAtom';
+import { AnalyticsBootstrapRoot } from '../state/analyticsBootstrapRoot';
 import type { AnalyticsBootstrapData } from '../types/analyticsBootstrapData';
 
 interface DetailsLayoutRootProps {
@@ -12,8 +10,8 @@ interface DetailsLayoutRootProps {
 
 export function DetailsLayoutRoot({ bootstrapData }: DetailsLayoutRootProps) {
   return (
-    <BootstrapRoot bootstrapData={bootstrapData} rootAtom={analyticsRootAtom}>
+    <AnalyticsBootstrapRoot.Provider bootstrapData={bootstrapData}>
       <Views />
-    </BootstrapRoot>
+    </AnalyticsBootstrapRoot.Provider>
   );
 }
