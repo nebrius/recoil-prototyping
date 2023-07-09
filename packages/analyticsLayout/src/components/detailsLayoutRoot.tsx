@@ -1,7 +1,7 @@
 'use client';
 
 import { Views } from './views';
-import { AnalyticsBootstrapRoot } from '../state/analyticsBootstrapRoot';
+import { analyticsBootstrapRoot } from '../state/analyticsBootstrapRoot';
 import type { AnalyticsBootstrapData } from '../types/analyticsBootstrapData';
 
 interface DetailsLayoutRootProps {
@@ -10,8 +10,8 @@ interface DetailsLayoutRootProps {
 
 export function DetailsLayoutRoot({ bootstrapData }: DetailsLayoutRootProps) {
   return (
-    <AnalyticsBootstrapRoot.Provider bootstrapData={bootstrapData}>
+    <analyticsBootstrapRoot.Provider bootstrapData={bootstrapData}>
       <Views />
-    </AnalyticsBootstrapRoot.Provider>
+    </analyticsBootstrapRoot.Provider>
   );
 }

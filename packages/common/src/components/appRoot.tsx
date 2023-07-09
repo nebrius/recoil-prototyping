@@ -5,7 +5,7 @@ import { RecoilRoot } from 'recoil';
 
 import { AppHeader } from './header';
 import styles from './styles.module.css';
-import { CommonBootstrapRoot } from '../state/commonBootstrapRoot';
+import { commonBootstrapRoot } from '../state/commonBootstrapRoot';
 import type { CommonBootstrapData } from '../types/commonBootstrapData';
 
 interface AppRoot {
@@ -18,11 +18,11 @@ export function AppRoot({
 }: PropsWithChildren<AppRoot>) {
   return (
     <RecoilRoot>
-      <CommonBootstrapRoot.Provider bootstrapData={bootstrapData}>
+      <commonBootstrapRoot.Provider bootstrapData={bootstrapData}>
         <AppHeader />
         <div className={styles.appContent}>{children}</div>
         <footer className={styles.appFooter}>Footer content</footer>
-      </CommonBootstrapRoot.Provider>
+      </commonBootstrapRoot.Provider>
     </RecoilRoot>
   );
 }

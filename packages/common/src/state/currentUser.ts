@@ -1,12 +1,8 @@
 'use client';
 
-import { bootstrappedAtom, bootstrappedAtomValueHook } from 'recoil-bootstrap';
+import { commonBootstrapRoot } from './commonBootstrapRoot';
 
-import { CommonBootstrapRoot } from './commonBootstrapRoot';
-
-const currentUserAtom = bootstrappedAtom(CommonBootstrapRoot, {
+export const useCurrentUser = commonBootstrapRoot.bootstrappedValueHook({
   key: 'currentUserAtom',
   initialValue: ({ currentUser }) => currentUser,
 });
-
-export const useCurrentUser = bootstrappedAtomValueHook(currentUserAtom);

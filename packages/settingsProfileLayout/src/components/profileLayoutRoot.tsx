@@ -1,7 +1,7 @@
 'use client';
 
 import { ProfileDescription } from './profileDescription';
-import { ProfileBootstrapRoot } from '../state/profileBootstrapRoot';
+import { profileBootstrapRoot } from '../state/profileBootstrapRoot';
 import type { ProfileBootstrapData } from '../types/profileBootstrapData';
 
 interface ProfileLayoutRootProps {
@@ -10,8 +10,8 @@ interface ProfileLayoutRootProps {
 
 export function ProfileLayoutRoot({ bootstrapData }: ProfileLayoutRootProps) {
   return (
-    <ProfileBootstrapRoot.Provider bootstrapData={bootstrapData}>
+    <profileBootstrapRoot.Provider bootstrapData={bootstrapData}>
       <ProfileDescription />
-    </ProfileBootstrapRoot.Provider>
+    </profileBootstrapRoot.Provider>
   );
 }
